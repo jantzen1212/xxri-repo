@@ -1,7 +1,7 @@
 {
   "repository": "XXRI OS Lite i686 Software Repository",
   "schema_version": "3.0",
-  "last_updated": "2026-08-06",
+  "last_updated": "2026-08-17",
   "source_priority_policy": {
     "order": [
       "1_official_appimage_i686",
@@ -186,8 +186,8 @@
       "category": "Office",
       "version": "see abiword.tcz.info on repo",
       "homepage": "https://www.abisource.com/",
-      "icon_url": null,
-      "icon_note": "Icon is bundled inside the .tcz extension (freedesktop icon theme); no separate official icon endpoint exists.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/abiword.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/abiword.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (verified present in Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -251,8 +251,8 @@
       "category": "Office",
       "version": "see gnumeric.tcz.info on repo",
       "homepage": "http://www.gnumeric.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/gnumeric.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/gnumeric.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -311,8 +311,8 @@
       "category": "Office",
       "version": "6.2.x",
       "homepage": "https://www.libreoffice.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/libreoffice.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (entry confirmed at dashboardicons.com/icons/libreoffice); application identity confirmed.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -397,8 +397,8 @@
       "category": "IDE",
       "version": "see geany.tcz.info on repo",
       "homepage": "https://www.geany.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://raw.githubusercontent.com/geany/geany/master/icons/scalable/geany.svg",
+      "icon_note": "Official scalable SVG icon from the geany/geany GitHub repository's own icons/scalable/ directory.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -459,8 +459,8 @@
       "category": "Graphics",
       "version": "see gimp2.tcz.info on repo",
       "homepage": "https://www.gimp.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/gimp.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (entry confirmed at dashboardicons.com/icons/gimp); application identity confirmed. GIMP's own 'Wilber' branding is upstream at gitlab.gnome.org/GNOME/gimp-data if an official asset is preferred later.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -532,8 +532,8 @@
       "category": "Graphics",
       "version": "see mtpaint.tcz.info on repo",
       "homepage": "http://mtpaint.sourceforge.net/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/mtpaint.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/mtpaint.svg on master, via jsDelivr CDN); application identity confirmed (Papirus IconArchive page + changelog confirmed). Papirus GPL-3.0; brand logos belong to their owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -592,8 +592,8 @@
       "category": "Music",
       "version": "see audacity.tcz.info on repo",
       "homepage": "https://www.audacityteam.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://raw.githubusercontent.com/audacity/audacity/master/images/audacity.svg",
+      "icon_note": "Official SVG icon from the audacity/audacity GitHub repository's own images/ directory (Audacity Development Team, GPL v2+).",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -655,8 +655,8 @@
       "category": "Video",
       "version": "see vlc.tcz.info on repo",
       "homepage": "https://www.videolan.org/vlc/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://raw.githubusercontent.com/videolan/vlc/master/share/icons/256x256/vlc.png",
+      "icon_note": "Official icon from the videolan/vlc GitHub mirror of code.videolan.org (share/icons/256x256/vlc.png), the same icon shipped inside VLC's own source tree.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -730,8 +730,8 @@
       "category": "Emulator",
       "version": "see dosbox.tcz.info on repo",
       "homepage": "https://www.dosbox.com/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/dosbox.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/dosbox.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -792,8 +792,8 @@
       "category": "Emulator",
       "version": "see qemu-x86.tcz.info on repo",
       "homepage": "https://www.qemu.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://raw.githubusercontent.com/qemu/qemu/master/ui/icons/qemu.svg",
+      "icon_note": "Official QEMU logo SVG from the qemu/qemu GitHub mirror's own ui/icons/ directory (mirror of the primary gitlab.com/qemu-project/qemu repo).",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -855,8 +855,8 @@
       "category": "Network",
       "version": "see transmission.tcz.info on repo",
       "homepage": "https://transmissionbt.com/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://transmission.github.io/assets/images/Transmission_icon.png",
+      "icon_note": "Official icon hosted on transmission.github.io, the Transmission project's own official website/GitHub Pages site.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -915,8 +915,8 @@
       "category": "Network",
       "version": "3.70.6 (current)",
       "homepage": "https://filezilla-project.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/filezilla.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (slug 'filezilla' confirmed present in the repo's tree.json); application identity confirmed.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -997,8 +997,8 @@
       "category": "Network",
       "version": "see remmina.tcz.info on repo",
       "homepage": "https://remmina.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/remmina.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (slug 'remmina' confirmed at dashboardicons.com/icons/remmina); application identity confirmed.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1058,8 +1058,8 @@
       "category": "Chat",
       "version": "see xchat.tcz.info on repo",
       "homepage": "http://xchat.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/xchat.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/xchat.svg on master, via jsDelivr CDN); application identity confirmed (Papirus IconArchive page confirmed). Papirus GPL-3.0; brand logos belong to their owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1116,8 +1116,8 @@
       "category": "Browser",
       "version": "2.53.21",
       "homepage": "https://www.seamonkey-project.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/seamonkey.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/seamonkey.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1199,8 +1199,8 @@
       "category": "Internet",
       "version": "144.0",
       "homepage": "https://www.thunderbird.net/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/thunderbird.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (entry confirmed at dashboardicons.com/icons/thunderbird); application identity confirmed.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1280,8 +1280,8 @@
       "category": "Internet",
       "version": "see claws-mail.tcz.info on repo",
       "homepage": "https://www.claws-mail.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/claws-mail.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/claws-mail.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1342,8 +1342,8 @@
       "category": "Browser",
       "version": "140.13.0+ (actively patched)",
       "homepage": "https://www.mozilla.org/firefox/enterprise/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/firefox-esr.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/firefox-esr.svg on master, via jsDelivr CDN); application identity confirmed (Papirus ships the full Firefox family incl. the Debian firefox-esr icon name). Papirus GPL-3.0; brand logos belong to their owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1429,8 +1429,8 @@
       "category": "Utilities",
       "version": "see pcmanfm.tcz.info on repo",
       "homepage": "https://wiki.lxde.org/en/PCManFM",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/pcmanfm.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/pcmanfm.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1488,8 +1488,8 @@
       "category": "Utilities",
       "version": "see leafpad.tcz.info on repo",
       "homepage": "http://tarot.freeshell.org/leafpad/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/leafpad.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/leafpad.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1546,8 +1546,8 @@
       "category": "Utilities",
       "version": "see evince.tcz.info on repo",
       "homepage": "https://wiki.gnome.org/Apps/Evince",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/evince.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/evince.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1607,8 +1607,8 @@
       "category": "Utilities",
       "version": "see mupdf.tcz.info on repo",
       "homepage": "https://mupdf.com/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/mupdf.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/mupdf.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [],
@@ -1665,8 +1665,8 @@
       "category": "Compression",
       "version": "25.01",
       "homepage": "https://www.7-zip.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/7zip.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (slug '7zip' confirmed present in the repo's tree.json); application identity confirmed.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [],
@@ -1746,8 +1746,8 @@
       "category": "Utilities",
       "version": "see brasero.tcz.info on repo",
       "homepage": "https://wiki.gnome.org/Apps/Brasero",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/brasero.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/brasero.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1806,8 +1806,8 @@
       "category": "Science",
       "version": "7.4.22",
       "homepage": "https://boinc.berkeley.edu/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/boinc.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (slug 'boinc' confirmed present in the repo's tree.json); application identity confirmed.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [],
@@ -1886,8 +1886,8 @@
       "category": "Development",
       "version": "see cmake.tcz.info on repo",
       "homepage": "https://cmake.org/",
-      "icon_url": null,
-      "icon_note": "Bundled inside the .tcz extension.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/cmake.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/cmake.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -2016,8 +2016,8 @@
       "description": "Type-2 hypervisor. Official 32-bit (i386) Linux host support ended after the 5.x series.",
       "category": "System",
       "homepage": "https://www.virtualbox.org/",
-      "icon_url": null,
-      "icon_note": "No confirmed official icon URL found this session -- do not ship a guessed one. VirtualBox's own site (virtualbox.org) should have official branding assets; needs a follow-up check.",
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/virtualbox.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (slug 'virtualbox' confirmed at dashboardicons.com/icons/virtualbox); application identity confirmed.",
       "architecture": "i686",
       "upstream_32bit_status": "discontinued_after_5.x_series",
       "last_official_i686_version": "5.2.44",
@@ -2083,7 +2083,7 @@
       "description": "Vector graphics editor. No official i686 Linux build could be confirmed at any point in the project's AppImage history; also absent from Tiny Core's repository.",
       "category": "Graphics",
       "homepage": "https://inkscape.org/",
-      "icon_url": null,
+      "icon_url": "https://cdn.simpleicons.org/inkscape",
       "architecture": "i686",
       "upstream_32bit_status": "no_official_i686_build_found",
       "sources": [],
@@ -2122,7 +2122,8 @@
       "download_url": null,
       "version": null,
       "priority_tier": null,
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon via Simple Icons (slug 'inkscape' confirmed in the Simple Icons collection); official Inkscape brand mark."
     },
     {
       "id": "code-oss",
@@ -2203,7 +2204,7 @@
       "description": "Screencasting/streaming software. Never had official Linux i686 support at any point.",
       "category": "Multimedia",
       "homepage": "https://obsproject.com/",
-      "icon_url": null,
+      "icon_url": "https://cdn.simpleicons.org/obsstudio",
       "architecture": "i686",
       "upstream_32bit_status": "never_supported_on_linux",
       "sources": [],
@@ -2244,7 +2245,8 @@
       "download_url": null,
       "version": "32.2.1 (x86_64 only)",
       "priority_tier": null,
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon via Simple Icons (confirmed listed on dashboardicons.com/icons/external/obsstudio and simpleicons.org); official OBS Studio brand mark, monochrome."
     },
     {
       "id": "musescore",
@@ -2320,7 +2322,7 @@
       "description": "KDE non-linear video editor. Official AppImages are x86_64 only.",
       "category": "Video",
       "homepage": "https://kdenlive.org/",
-      "icon_url": null,
+      "icon_url": "https://cdn.simpleicons.org/kdenlive",
       "architecture": "i686",
       "upstream_32bit_status": "no_official_i686_build_found",
       "sources": [],
@@ -2360,7 +2362,8 @@
       "download_url": null,
       "version": "25.12.2 (x86_64 only)",
       "priority_tier": null,
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon via Simple Icons (slug 'kdenlive' confirmed present in the Simple Icons collection); official Kdenlive brand mark, monochrome."
     },
     {
       "id": "krita",
@@ -2368,7 +2371,7 @@
       "description": "Digital painting application. All official AppImage builds (stable and nightly) are x86_64 only.",
       "category": "Graphics",
       "homepage": "https://krita.org/",
-      "icon_url": null,
+      "icon_url": "https://cdn.simpleicons.org/krita",
       "architecture": "i686",
       "upstream_32bit_status": "no_official_i686_build_found",
       "sources": [],
@@ -2406,7 +2409,8 @@
       "download_url": null,
       "version": "5.3.1 stable / 6.0.1 preview (x86_64 only)",
       "priority_tier": null,
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon via Simple Icons (slug 'krita' confirmed in the Simple Icons collection); official Krita brand mark."
     },
     {
       "id": "mpv",
@@ -2414,7 +2418,7 @@
       "description": "Media player. Has never had an official Linux binary of any architecture -- Linux distribution is entirely via third-party distro packages.",
       "category": "Video",
       "homepage": "https://mpv.io/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/mpv.svg",
       "architecture": "i686",
       "upstream_32bit_status": "no_official_linux_binary_of_any_architecture",
       "sources": [],
@@ -2451,7 +2455,8 @@
       "download_url": null,
       "version": "0.41.0 (no official Linux binary of any arch)",
       "priority_tier": null,
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/mpv.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "handbrake",
@@ -2459,7 +2464,7 @@
       "description": "Video transcoder. Official Linux distribution is Flatpak only, x86_64.",
       "category": "Video",
       "homepage": "https://handbrake.fr/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/handbrake.svg",
       "architecture": "i686",
       "upstream_32bit_status": "no_official_i686_build_found",
       "sources": [],
@@ -2497,7 +2502,8 @@
       "download_url": null,
       "version": "1.11.2 (Flatpak, x86_64 only)",
       "priority_tier": null,
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (slug 'handbrake' confirmed present in the repo's tree.json); application identity confirmed."
     },
     {
       "id": "chromium",
@@ -2553,7 +2559,8 @@
       "version": "unknown -- last 32-bit Linux revision not yet identified",
       "priority_tier": 2,
       "verified": false,
-      "icon_url": null
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/chromium.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (entry confirmed at dashboardicons.com/icons/chromium); application identity confirmed."
     },
     {
       "id": "discord",
@@ -2599,7 +2606,8 @@
       "version": "current (x86_64/arm64 only, never had i686)",
       "priority_tier": null,
       "verified": false,
-      "icon_url": null
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/discord.svg",
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (entry confirmed at dashboardicons.com/icons/discord); application identity confirmed."
     },
     {
       "id": "signal-desktop",
@@ -2644,7 +2652,8 @@
       "version": "current (amd64/arm64 only, never had i686)",
       "priority_tier": null,
       "verified": false,
-      "icon_url": null
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/signal-desktop.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/signal-desktop.svg on master, via jsDelivr CDN); application identity confirmed (Papirus IconArchive page confirmed). Papirus GPL-3.0; brand logos belong to their owners."
     },
     {
       "id": "scummvm",
@@ -2683,7 +2692,8 @@
       "version": null,
       "priority_tier": null,
       "verified": false,
-      "icon_url": null
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/scummvm.svg",
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/scummvm.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (verified present in Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "double-commander",
@@ -2701,7 +2711,7 @@
       ],
       "description": "Dual-pane file manager inspired by Total Commander. Official SourceForge distribution includes a dedicated 32-bit Linux build folder, though the newest confirmed version there is an old beta.",
       "homepage": "https://doublecmd.sourceforge.io/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/double-commander.svg",
       "architecture": "i686",
       "support_status": "research_in_progress",
       "last_supported_version": "0.8.4 beta (needs re-check for a newer 32-bit release)",
@@ -2737,7 +2747,8 @@
       "version": "0.8.4 beta (needs re-check for a newer 32-bit release)",
       "priority_tier": 2,
       "research_status": "research_in_progress",
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (slug 'double-commander' confirmed present in the repo's tree.json); application identity confirmed."
     },
     {
       "id": "peazip",
@@ -2753,7 +2764,7 @@
       ],
       "description": "Cross-platform archive manager. Officially described by the project as supporting IA-32 and x86-64, but the most recent SourceForge listing checked (7.3.2) only showed an x86_64 .deb -- exact last i686 version not yet pinned.",
       "homepage": "https://peazip.github.io/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/peazip.svg",
       "architecture": "i686",
       "support_status": "research_in_progress",
       "last_supported_version": null,
@@ -2772,7 +2783,8 @@
       "version": "10.9.0 (architecture for Linux builds not yet confirmed)",
       "priority_tier": null,
       "research_status": "research_in_progress",
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/peazip.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "gparted",
@@ -2793,7 +2805,7 @@
       ],
       "description": "Bootable live ISO for graphical disk partition management. Officially maintained with a dedicated i686 (and i686-PAE) build alongside amd64.",
       "homepage": "https://gparted.net/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/gparted.svg",
       "architecture": "i686",
       "support_status": "fully_verified",
       "last_supported_version": "1.8.0-2 (current)",
@@ -2845,7 +2857,8 @@
       "version": "1.8.0-2 (current)",
       "priority_tier": 1,
       "research_status": "fully_verified",
-      "verified": true
+      "verified": true,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/gparted.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "wireshark",
@@ -2864,7 +2877,7 @@
       ],
       "description": "Network protocol analyzer. Official releases have only ever included Windows and macOS binaries.",
       "homepage": "https://www.wireshark.org/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/wireshark.svg",
       "architecture": "i686",
       "support_status": "not_found",
       "last_supported_version": null,
@@ -2886,7 +2899,8 @@
       "version": "4.6.3 (Windows/macOS only officially)",
       "priority_tier": null,
       "research_status": "not_found",
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (slug 'wireshark' confirmed present in the repo's tree.json); application identity confirmed."
     },
     {
       "id": "qbittorrent",
@@ -2902,7 +2916,7 @@
       ],
       "description": "BitTorrent client with a Qt-based GUI. Official AppImages are x86_64 only.",
       "homepage": "https://www.qbittorrent.org/",
-      "icon_url": null,
+      "icon_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/src/icons/qbittorrent-tray.svg",
       "architecture": "i686",
       "support_status": "not_found",
       "last_supported_version": null,
@@ -2923,7 +2937,8 @@
       "version": "5.1.1 (x86_64-linux only)",
       "priority_tier": null,
       "research_status": "not_found",
-      "verified": false
+      "verified": false,
+      "icon_note": "Official colored app icon from the qbittorrent/qBittorrent GitHub repository's own src/icons/ directory."
     },
     {
       "id": "ghostscript",
@@ -2942,7 +2957,7 @@
       ],
       "description": "PostScript and PDF interpreter/rasterizer used as a backend by many other tools (Scribus, CUPS, etc.). Officially publishes current 32-bit Linux binaries.",
       "homepage": "https://ghostscript.com/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/ghostscript.svg",
       "architecture": "i686",
       "support_status": "fully_verified",
       "last_supported_version": "10.07.1 (current)",
@@ -2978,7 +2993,8 @@
       "version": "10.07.1 (current)",
       "priority_tier": 1,
       "research_status": "fully_verified",
-      "verified": true
+      "verified": true,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/ghostscript.svg on master, via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus GPL-3.0; brand logos belong to their owners."
     },
     {
       "id": "okular",
@@ -2997,7 +3013,7 @@
       ],
       "description": "KDE's universal document viewer (PDF, PostScript, DjVu, CHM, XPS, ePub). Available via Arch Linux 32, a community-maintained i686 distro repository.",
       "homepage": "https://okular.kde.org/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/okular.svg",
       "architecture": "i686",
       "support_status": "verified_with_fallback",
       "last_supported_version": "23.04.2-1.0 (Arch32 build)",
@@ -3033,7 +3049,8 @@
       "version": "23.04.2-1.0 (Arch32 build)",
       "priority_tier": 4,
       "research_status": "verified_with_fallback",
-      "verified": true
+      "verified": true,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/okular.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "onlyoffice",
@@ -3054,7 +3071,7 @@
       ],
       "description": "Open-source office suite with strong MS Office format compatibility. Currently 64-bit-only on Linux; historically offered 32-bit builds.",
       "homepage": "https://www.onlyoffice.com/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/homarr-labs/dashboard-icons/svg/onlyoffice.svg",
       "architecture": "i686",
       "support_status": "official_discontinued",
       "last_supported_version": "unconfirmed -- historically present around the 5.3 era (2019), exact last 32-bit version not yet pinned",
@@ -3075,7 +3092,8 @@
       "version": "unconfirmed -- historically present around the 5.3 era (2019), exact last 32-bit version not yet pinned",
       "priority_tier": null,
       "research_status": "official_discontinued",
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon from the homarr-labs/dashboard-icons set (entry confirmed at dashboardicons.com/icons/onlyoffice); application identity confirmed."
     },
     {
       "id": "tigervnc",
@@ -3090,7 +3108,7 @@
       ],
       "description": "VNC client/server, fork of TightVNC. Current official SourceForge release binaries are x86_64-only; 32-bit support existed historically.",
       "homepage": "https://tigervnc.org/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/tigervnc.svg",
       "architecture": "i686",
       "support_status": "official_discontinued",
       "last_supported_version": "unconfirmed -- 32-bit binaries were available per a 2019-era review; exact last i686 version not yet pinned",
@@ -3112,7 +3130,8 @@
       "version": "unconfirmed -- 32-bit binaries were available per a 2019-era review; exact last i686 version not yet pinned",
       "priority_tier": null,
       "research_status": "official_discontinued",
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/tigervnc.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "keepassxc",
@@ -3130,7 +3149,7 @@
       ],
       "description": "Cross-platform password manager. Official AppImage and all listed install methods are x86_64 only.",
       "homepage": "https://keepassxc.org/",
-      "icon_url": null,
+      "icon_url": "https://raw.githubusercontent.com/keepassxreboot/keepassxc/develop/share/icons/application/scalable/apps/keepassxc.svg",
       "architecture": "i686",
       "support_status": "not_found",
       "last_supported_version": null,
@@ -3153,7 +3172,8 @@
       "version": "2.7.12 (x86_64 AppImage; all other listed methods are also 64-bit distro packages)",
       "priority_tier": null,
       "research_status": "not_found",
-      "verified": false
+      "verified": false,
+      "icon_note": "Official scalable SVG app icon from the keepassxreboot/keepassxc GitHub repository's own share/icons/ directory (confirmed present via the repo's own COPYING/licensing manifest)."
     },
     {
       "id": "supertuxkart",
@@ -3171,7 +3191,7 @@
       ],
       "description": "3D kart racing game. Official download page currently offers a 32-bit Intel/AMD Linux tarball.",
       "homepage": "https://supertuxkart.net/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/supertuxkart.svg",
       "architecture": "i686",
       "support_status": "fully_verified",
       "last_supported_version": "current (matches whatever the latest release is)",
@@ -3222,7 +3242,8 @@
       "version": "current (matches whatever the latest release is)",
       "priority_tier": 1,
       "research_status": "fully_verified",
-      "verified": true
+      "verified": true,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/supertuxkart.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (verified present in Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "wesnoth",
@@ -3240,7 +3261,7 @@
       ],
       "description": "Turn-based fantasy strategy game. Official distribution for Linux is via distro packages/Flatpak rather than a generic i686 tarball; a 2019-era third-party review claimed 32-bit support but this was not confirmed via an official source this session.",
       "homepage": "https://www.wesnoth.org/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/wesnoth.svg",
       "architecture": "i686",
       "support_status": "research_in_progress",
       "last_supported_version": null,
@@ -3262,7 +3283,8 @@
       "version": "1.18.7 stable / 1.19.23 preview (Flatpak, x86_64)",
       "priority_tier": null,
       "research_status": "research_in_progress",
-      "verified": false
+      "verified": false,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/wesnoth.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "midori",
@@ -3281,7 +3303,7 @@
       ],
       "description": "Lightweight privacy-focused browser (Astian Foundation). Official GitHub releases (goastian org) include i386 packages for recent versions.",
       "homepage": "https://astian.org/en/midori-browser/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/midori.svg",
       "architecture": "i686",
       "support_status": "official_discontinued",
       "last_supported_version": "11.3.0 (i386 .pet package confirmed; exact status of newer versions' i386 builds not confirmed)",
@@ -3312,7 +3334,8 @@
       ],
       "package_type": "official_github_release",
       "tested_install": false,
-      "tested_launch": false
+      "tested_launch": false,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/midori.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (standard freedesktop icon name shipped by Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     },
     {
       "id": "wps-office",
@@ -3331,7 +3354,7 @@
       ],
       "description": "Proprietary MS-Office-compatible suite. IMPORTANT: per contemporary reporting, the Linux build historically was maintained by an independent 'WPS Community', not Kingsoft/WPS's own China-based company -- this distinction affects how 'official' this source really is.",
       "homepage": "https://www.wps.com/office/linux/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/wps-office2019-kprometheus.svg",
       "architecture": "i686",
       "support_status": "research_in_progress",
       "last_supported_version": "11.1.0.11723 (32-bit+64-bit confirmed per a third-party review); current wps.com/office/linux page's architecture support not yet checked",
@@ -3349,7 +3372,8 @@
       ],
       "package_type": null,
       "tested_install": false,
-      "tested_launch": false
+      "tested_launch": false,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/wps-office2019-kprometheus.svg on master, via jsDelivr CDN); application identity confirmed (exact Papirus icon name confirmed from the PR that added WPS 2019). Papirus GPL-3.0; brand logos belong to their owners."
     },
     {
       "id": "emacs",
@@ -3366,7 +3390,7 @@
       ],
       "description": "Extensible text editor/computing environment. GNU's own official download page confirms Linux distribution is via distro packages, not a generic binary -- Windows/macOS get official binaries, Linux does not.",
       "homepage": "https://www.gnu.org/software/emacs/",
-      "icon_url": null,
+      "icon_url": "https://cdn.jsdelivr.net/gh/PapirusDevelopmentTeam/papirus-icon-theme@master/Papirus/64x64/apps/emacs.svg",
       "architecture": "i686",
       "support_status": "not_found",
       "last_supported_version": null,
@@ -3383,7 +3407,8 @@
       ],
       "package_type": null,
       "tested_install": false,
-      "tested_launch": false
+      "tested_launch": false,
+      "icon_note": "Community-maintained icon from the Papirus icon theme (Papirus/64x64/apps/emacs.svg on the project's master branch, served via jsDelivr CDN); application identity confirmed (verified present in Papirus). Papirus is GPL-3.0; brand logos belong to their respective owners."
     }
   ],
   "verification_tooling": {
