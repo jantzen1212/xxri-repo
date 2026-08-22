@@ -311,8 +311,8 @@
       "category": "Office",
       "version": "6.2.x",
       "homepage": "https://www.libreoffice.org/",
-      "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/libreoffice.svg",
-      "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/libreoffice.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
+      "icon_url": "https://raw.githubusercontent.com/LibreOffice/core/master/sysui/desktop/icons/hicolor/256x256/apps/main.png",
+      "icon_note": "Official upstream project artwork: LibreOffice core repository (sysui/desktop/icons/hicolor/256x256/apps/main.png). Verified reachable and a real image file.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1058,8 +1058,8 @@
       "category": "Chat",
       "version": "see xchat.tcz.info on repo",
       "homepage": "http://xchat.org/",
-      "icon_url": "https://upload.wikimedia.org/wikipedia/commons/6/67/Xchat_logo.svg",
-      "icon_note": "Community artwork from Wikimedia Commons (File:Xchat logo.svg, CC BY-SA 3.0) -- XChat is discontinued upstream and ships no logo in any current icon theme. Verified reachable and a real image file.",
+      "icon_url": "http://xchat.org/img/xchatlogo.png",
+      "icon_note": "Official XChat application icon from the project's own website (xchat.org/img/xchatlogo.png, 48x48 PNG). Served over plain HTTP because xchat.org publishes no HTTPS endpoint; the project is discontinued upstream and ships no logo in any current icon theme. Verified reachable and a real image file.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1280,8 +1280,8 @@
       "category": "Internet",
       "version": "see claws-mail.tcz.info on repo",
       "homepage": "https://www.claws-mail.org/",
-      "icon_url": "https://upload.wikimedia.org/wikipedia/commons/3/34/ClawsMailLogo.png",
-      "icon_note": "Community artwork from Wikimedia Commons (File:ClawsMailLogo.png, GPLv3) -- the project logo; Papirus only symlinks Claws Mail to a generic mail icon. Verified reachable and a real image file.",
+      "icon_url": "https://git.claws-mail.org/?p=claws.git;a=blob_plain;f=claws-mail.png;hb=HEAD",
+      "icon_note": "Official Claws Mail application icon from the project's own git (git.claws-mail.org, claws-mail.png). Verified reachable and a real image file.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1488,8 +1488,8 @@
       "category": "Utilities",
       "version": "see leafpad.tcz.info on repo",
       "homepage": "http://tarot.freeshell.org/leafpad/",
-      "icon_url": "https://upload.wikimedia.org/wikipedia/commons/7/7c/LeafpadLogo.svg",
-      "icon_note": "Community artwork from Wikimedia Commons (File:LeafpadLogo.svg, GPL) -- the Leafpad project logo; Papirus only symlinks leafpad to a generic text-editor icon. Verified reachable and a real image file.",
+      "icon_url": "http://tarot.freeshell.org/leafpad/leafpad32.png",
+      "icon_note": "Official Leafpad application icon from the project's own homepage (tarot.freeshell.org/leafpad/leafpad32.png). Served over plain HTTP because the site publishes no HTTPS endpoint; Leafpad is discontinued upstream and Papirus only symlinks it to a generic text-editor icon. Verified reachable and a real image file.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [
@@ -1665,8 +1665,8 @@
       "category": "Compression",
       "version": "25.01",
       "homepage": "https://www.7-zip.org/",
-      "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/7zip.svg",
-      "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/7zip.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
+      "icon_url": "https://www.7-zip.org/7ziplogo.png",
+      "icon_note": "Official 7-Zip logo from the project's own website (7-zip.org/7ziplogo.png). Verified reachable and a real image file.",
       "architecture": "i686",
       "package_type": "tinycore_tcz",
       "dependencies": [],
@@ -2016,8 +2016,8 @@
       "description": "Type-2 hypervisor. Official 32-bit (i386) Linux host support ended after the 5.x series.",
       "category": "System",
       "homepage": "https://www.virtualbox.org/",
-      "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/virtualbox.svg",
-      "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/virtualbox.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
+      "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/virtualbox.svg",
+      "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus/64x64/apps/virtualbox.svg, served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
       "architecture": "i686",
       "upstream_32bit_status": "discontinued_after_5.x_series",
       "last_official_i686_version": "5.2.44",
@@ -2652,8 +2652,8 @@
       "version": "current (amd64/arm64 only, never had i686)",
       "priority_tier": null,
       "verified": false,
-      "icon_url": "https://raw.githubusercontent.com/signalapp/Signal-Desktop/main/images/signal-logo.svg",
-      "icon_note": "Official upstream project artwork: Signal Desktop upstream repository (images/signal-logo.svg). Verified reachable and a real image file."
+      "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/signal-desktop.svg",
+      "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus/64x64/apps/signal-desktop.svg, served from the project's own GitHub raw endpoint. Preferred over Signal's own images/signal-logo.svg, which is a knockout mark with no fill and renders as a black ring on a light card. Brand logos belong to their respective owners. Verified reachable and a real image file."
     },
     {
       "id": "scummvm",
@@ -2805,7 +2805,7 @@
       ],
       "description": "Bootable live ISO for graphical disk partition management. Officially maintained with a dedicated i686 (and i686-PAE) build alongside amd64.",
       "homepage": "https://gparted.net/",
-      "icon_url": "https://raw.githubusercontent.com/GNOME/gparted/master/data/icons/svg/gparted.svg",
+      "icon_url": "https://raw.githubusercontent.com/GNOME/gparted/master/data/icons/hicolor_apps_scalable_gparted.svg",
       "architecture": "i686",
       "support_status": "fully_verified",
       "last_supported_version": "1.8.0-2 (current)",
@@ -2858,7 +2858,7 @@
       "priority_tier": 1,
       "research_status": "fully_verified",
       "verified": true,
-      "icon_note": "Official upstream project artwork: GNOME GParted upstream repository (data/icons/svg/gparted.svg). Verified reachable and a real image file."
+      "icon_note": "Official upstream project artwork: GNOME GParted upstream repository (data/icons/hicolor_apps_scalable_gparted.svg). This is the single application icon; data/icons/svg/gparted.svg in the same repository is a multi-icon sheet that renders as a strip. Verified reachable and a real image file."
     },
     {
       "id": "wireshark",
