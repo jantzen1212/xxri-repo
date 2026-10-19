@@ -46,7 +46,7 @@ i686.json
 
 ## Rules
 
-- Never remove existing entries.
+- Only list applications with an installable i686 build; remove an entry only when none exists.
 - Never fabricate URLs.
 - Never use Wikipedia as evidence.
 - Preserve schema compatibility.

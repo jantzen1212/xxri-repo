@@ -1,7 +1,7 @@
 {
   "repository": "XXRI OS Lite i686 Software Repository",
   "schema_version": "3.0",
-  "last_updated": "2026-08-22",
+  "last_updated": "2026-10-19",
   "source_priority_policy": {
     "order": [
       "1_official_appimage_i686",
@@ -26,17 +26,14 @@
       "verified_with_fallback": "No qualifying official source exists (tiers 1-3 exhausted and rejected with cited reasons), so a tier-4/5 fallback (Tiny Core package or vetted community build) is selected and recorded instead.",
       "research_in_progress": "Sources exist and are recorded but the full priority-1-through-6 exhaustive search has not yet been completed to this session's standard.",
       "not_found": "Priorities 1 through 6 were all checked (official site, official archive/FTP, GitHub/GitLab Releases, distro repos including Tiny Core/Arch32/Debian/Ubuntu archives, trusted community AppImages, and Archive.org historical mirrors) and none yielded a usable i686 Linux build. Reasons and every checked source are recorded in rejection_reasons/checklist."
-    },
-    "test_status_fields": "tested_install and tested_launch are always false in this repository -- they are placeholders for the XXRI Lite maintainer to flip to true only after physically testing the package on real i686 hardware or a VM. The assistant never sets these to true."
+    }
   },
   "research_queue_not_yet_verified": [
     "VLC - check videolan.org official AppImage/portable archive before falling back to Tiny Core vlc.tcz",
     "GIMP - check gimp.org / AppImageHub for official i686 AppImage before falling back to Tiny Core gimp2.tcz",
-    "Inkscape - check inkscape.org releases for i686 AppImage/archive; not found in Tiny Core repo either, needs full search",
     "Audacity - check github.com/audacity/audacity releases for i686 AppImage before falling back to Tiny Core audacity.tcz",
     "Geany - check geany.org downloads for portable i686 archive before falling back to Tiny Core geany.tcz",
     "LibreOffice - search all historical documentfoundation.org releases for the last official i686 .tar.gz (LibreOffice dropped 32-bit Linux builds around version 7.x; need exact last version)",
-    "ONLYOFFICE - search onlyoffice.com and github.com/ONLYOFFICE releases for any historical i686 build; unconfirmed whether one ever existed",
     "Code OSS / VSCodium - check github.com/VSCodium/vscodium and update.code.visualstudio.com for historical i686 archives; Microsoft dropped 32-bit builds years ago, need exact last version"
   ],
   "applications": [
@@ -45,7 +42,7 @@
       "title": "Mozilla Firefox",
       "description": "Web browser. Mozilla ended official 32-bit Linux support in 2026; this is the final official release that still ships an i686 build, not a current release.",
       "category": "Browser",
-      "version": "144.0",
+      "version": "144.0.2",
       "upstream_32bit_status": "discontinued_after_this_version",
       "last_official_i686_version": "144.0",
       "homepage": "https://www.mozilla.org/firefox/",
@@ -66,6 +63,23 @@
         {
           "priority": 2,
           "type": "official_archive",
+          "provider": "Mozilla (official)",
+          "architecture": "i686",
+          "url": "https://ftp.mozilla.org/pub/firefox/releases/144.0.2/linux-i686/en-US/firefox-144.0.2.tar.xz",
+          "existence_confirmed_via_research": true,
+          "version": "144.0.2",
+          "size_bytes": 79734928,
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200, 79734928 bytes, sha256 matches Mozilla SHA256SUMS. 144.0.2 is the last Firefox release with a linux-i686 build (145+ have none).",
+          "checksum": {
+            "algorithm": "sha256",
+            "value": "ca5e152d9413163f1c4e1a2f674a72643a22c12b1e167e5a5c93166ed0612aec",
+            "source_url": "https://ftp.mozilla.org/pub/firefox/releases/144.0.2/SHA256SUMS"
+          }
+        },
+        {
+          "priority": 2,
+          "type": "official_archive",
           "version": "144.0",
           "url": "https://ftp.mozilla.org/pub/firefox/releases/144.0/linux-i686/en-US/firefox-144.0.tar.bz2",
           "checksum": {
@@ -80,8 +94,6 @@
           "live_check": null
         }
       ],
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "official_discontinued",
       "aliases": [
         "Mozilla Firefox",
@@ -99,18 +111,24 @@
         "final-32bit-release"
       ],
       "support_status": "official_discontinued",
-      "last_supported_version": "144.0",
+      "last_supported_version": "144.0.2",
       "discontinued_reason": "Mozilla ended official 32-bit Linux support after Firefox 144 (Nov 2025). Firefox 145 onward is 64-bit-only on Linux.",
       "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
       "notes": [
         "See 'firefox-esr' entry -- ESR 140.x is currently better maintained (still receiving security patches) than this mainline 144.0 freeze. XXRI Store should consider defaulting users to firefox-esr instead.",
-        "[source priority 2] URL pattern confirmed real and stable across dozens of historical Firefox releases fetched this session (e.g. 100.0, 57.0, 27.0.1). 144.0 confirmed via Mozilla's official blog as the last version built for 32-bit Linux. Exact 144.0/linux-i686 directory listing itself not independently fetched this session -- confirm before shipping."
+        "[source priority 2] URL pattern confirmed real and stable across dozens of historical Firefox releases fetched this session (e.g. 100.0, 57.0, 27.0.1). 144.0 confirmed via Mozilla's official blog as the last version built for 32-bit Linux. Exact 144.0/linux-i686 directory listing itself not independently fetched this session -- confirm before shipping.",
+        "[2026-10-19] download_url was firefox-144.0.tar.bz2, which returns 404 (Mozilla ships .tar.xz). Now 144.0.2, the last i686 release, with Mozilla's published sha256. exec_path pins firefox/firefox: without it install-archive could register updater, glxtest or crashhelper instead."
       ],
       "current_upstream_version": "151.0.2 (mainline, 64-bit only)",
       "store_recommendation": "XXRI should NOT default users here -- point to 'firefox-esr' instead, which is actively patched. This entry (144.0 mainline) is a dead end as of Nov 2025.",
-      "download_url": "https://ftp.mozilla.org/pub/firefox/releases/144.0/linux-i686/en-US/firefox-144.0.tar.bz2",
+      "download_url": "https://ftp.mozilla.org/pub/firefox/releases/144.0.2/linux-i686/en-US/firefox-144.0.2.tar.xz",
       "priority_tier": 2,
-      "verified": true
+      "verified": true,
+      "exec_path": "firefox/firefox",
+      "size": 79734928,
+      "checksum": "ca5e152d9413163f1c4e1a2f674a72643a22c12b1e167e5a5c93166ed0612aec",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "telegram-desktop",
@@ -145,15 +163,13 @@
             "source_url": null,
             "note": "Telegram does not publish a separate published checksum file alongside this legacy build; none fetched this session. Compute and pin a checksum from the downloaded file directly before shipping."
           },
-          "size_bytes": null,
+          "size_bytes": 37623572,
           "status": "selected",
           "verification_note": "Official URL confirmed via an independent technical source citing the exact updates.tdesktop.com path and version. This is a legacy 2018-era build -- flag to users clearly that it predates most current Telegram protocol/UI features.",
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: HTTP 200, 37623572 bytes, xz tarball Telegram/{Telegram,Updater}. Telegram publishes no checksum for it."
         }
       ],
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "official_discontinued",
       "aliases": [
         "Telegram",
@@ -173,18 +189,23 @@
       "discontinued_reason": "Telegram's official static Linux 32-bit build was discontinued after version 2.4.4 (circa 2018); all newer official builds are 64-bit only.",
       "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
       "notes": [
-        "[source priority 2] Official URL confirmed via an independent technical source citing the exact updates.tdesktop.com path and version. This is a legacy 2018-era build -- flag to users clearly that it predates most current Telegram protocol/UI features."
+        "[source priority 2] Official URL confirmed via an independent technical source citing the exact updates.tdesktop.com path and version. This is a legacy 2018-era build -- flag to users clearly that it predates most current Telegram protocol/UI features.",
+        "[2026-10-19] exec_path pins Telegram/Telegram so the bundled Updater is never registered as the app."
       ],
       "download_url": "https://updates.tdesktop.com/tlinux32/tsetup32.2.4.4.tar.xz",
       "priority_tier": 2,
-      "verified": true
+      "verified": true,
+      "exec_path": "Telegram/Telegram",
+      "size": 37623572,
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "abiword",
       "title": "AbiWord",
       "description": "Lightweight word processor with a familiar toolbar-based interface, suitable for low-resource 32-bit machines.",
       "category": "Office",
-      "version": "see abiword.tcz.info on repo",
+      "version": "3.0.5",
       "homepage": "https://www.abisource.com/",
       "icon_url": "https://raw.githubusercontent.com/AbiWord/abiword/master/abiword.png",
       "icon_note": "Official upstream project artwork: AbiWord upstream repository (abiword.png). Verified reachable and a real image file.",
@@ -202,23 +223,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see abiword.tcz.info on repo",
+          "version": "3.0.5",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/abiword.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/abiword.tcz.md5.txt"
           },
-          "size_bytes": 6815744,
-          "status": "alive_unconfirmed_bytes",
+          "size_bytes": 6803456,
+          "status": "selected",
           "tc_branch_confirmed": "16.x",
           "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 6803456 bytes, .info Version 3.0.5; dependency closure 94 extensions (~70.0 MB) all present; .list ships the launcher abiword."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [
         "AbiSource"
@@ -238,18 +257,23 @@
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
         "Official site abisource.com is now defunct/archived (no longer live).",
-        "Project's current home, gitlab.gnome.org/World/AbiWord, was checked and has no binary release artifacts -- source only."
+        "Project's current home, gitlab.gnome.org/World/AbiWord, was checked and has no binary release artifacts -- source only.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/abiword.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 6803456,
+      "exec_path": "abiword",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "gnumeric",
       "title": "Gnumeric",
       "description": "Spreadsheet application focused on numerical accuracy, lighter-weight than a full office suite.",
       "category": "Office",
-      "version": "see gnumeric.tcz.info on repo",
+      "version": "1.12.49",
       "homepage": "http://www.gnumeric.org/",
       "icon_url": "https://raw.githubusercontent.com/GNOME/gnumeric/master/icons/gnome-gnumeric.png",
       "icon_note": "Official upstream project artwork: GNOME Gnumeric upstream repository (icons/gnome-gnumeric.png). Verified reachable and a real image file.",
@@ -267,23 +291,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see gnumeric.tcz.info on repo",
+          "version": "1.12.49",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/gnumeric.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/gnumeric.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "alive_unconfirmed_bytes",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch before marking production-ready.",
+          "size_bytes": 3063808,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 3063808 bytes, .info Version 1.12.49; dependency closure 52 extensions (~33.6 MB) all present; .list ships the launcher gnumeric."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -298,18 +320,23 @@
       "discontinued_reason": "Gnumeric's own official download page tells users to get it from their Linux distribution -- the project has never published its own Linux binary.",
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "Gnumeric's own official download page (gnome.pages.gitlab.gnome.org/gnumeric-web/download.html) states verbatim: 'The preferred way for non-technical users to obtain Gnumeric is from (Linux, etc.) distributions.' No official generic Linux binary is offered."
+        "Gnumeric's own official download page (gnome.pages.gitlab.gnome.org/gnumeric-web/download.html) states verbatim: 'The preferred way for non-technical users to obtain Gnumeric is from (Linux, etc.) distributions.' No official generic Linux binary is offered.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/gnumeric.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 3063808,
+      "exec_path": "gnumeric",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "libreoffice",
       "title": "LibreOffice",
       "description": "Full office suite (word processor, spreadsheet, presentations) packaged as a single Tiny Core extension.",
       "category": "Office",
-      "version": "6.2.x",
+      "version": "7.2.2.2",
       "homepage": "https://www.libreoffice.org/",
       "icon_url": "https://raw.githubusercontent.com/LibreOffice/core/master/sysui/desktop/icons/hicolor/256x256/apps/main.png",
       "icon_note": "Official upstream project artwork: LibreOffice core repository (sysui/desktop/icons/hicolor/256x256/apps/main.png). Verified reachable and a real image file.",
@@ -344,25 +371,23 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see libreoffice.tcz.info on repo",
+          "version": "7.2.2.2",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/libreoffice.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/libreoffice.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "fallback",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch; upstream LibreOffice has been dropping 32-bit builds project-wide, so this is worth re-checking closely.",
+          "size_bytes": 206589952,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 206589952 bytes, .info Version 7.2.2.2; dependency closure 100 extensions (~317.3 MB) all present; .list ships the launcher loffice."
         }
       ],
       "priority_1_3_search_result": "found_official_archive_legacy_needs_exact_version",
       "upstream_32bit_status": "discontinued_after_6.2_series",
       "last_official_i686_version": "6.2.x",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "official_discontinued",
       "aliases": [
         "LO",
@@ -383,19 +408,25 @@
       "discontinued_reason": "The Document Foundation officially demoted, then stopped producing, Linux x86 (32-bit) builds after the 6.2 series; 6.3 (Aug 2019) onward is 64-bit-only.",
       "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
       "notes": [
-        "[source priority 2] OMG!Ubuntu, citing The Document Foundation's own LibreOffice 6.2 release notes ('Binary Linux x86 (32-bit) releases will be demoted... no Linux x86 builds produced by TDF after 6.2'), confirms 6.2 is the last officially TDF-built x86 Linux release; 6.3 (Aug 2019) dropped it. This supersedes the Tiny Core fallback below in priority, but needs the exact final patch version and file confirmed before going live."
+        "[source priority 2] OMG!Ubuntu, citing The Document Foundation's own LibreOffice 6.2 release notes ('Binary Linux x86 (32-bit) releases will be demoted... no Linux x86 builds produced by TDF after 6.2'), confirms 6.2 is the last officially TDF-built x86 Linux release; 6.3 (Aug 2019) dropped it. This supersedes the Tiny Core fallback below in priority, but needs the exact final patch version and file confirmed before going live.",
+        "[2026-10-19] download_url moved from the TDF archive directory listing to the Tiny Core 16.x libreoffice.tcz the tinycore_tcz handler installs (tce-load verifies its md5). exec_path pins loffice, the launcher the extension ships; it has no /usr/local/bin/libreoffice.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "current_upstream_version": "26.2.x (64-bit only)",
-      "download_url": "https://downloadarchive.documentfoundation.org/libreoffice/old/",
-      "priority_tier": 2,
-      "verified": true
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/libreoffice.tcz",
+      "priority_tier": 4,
+      "verified": true,
+      "exec_path": "loffice",
+      "size": 206589952,
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "geany",
       "title": "Geany",
       "description": "Lightweight IDE/text editor built on Scintilla and GTK, with basic build/compile integration.",
       "category": "IDE",
-      "version": "see geany.tcz.info on repo",
+      "version": "1.23",
       "homepage": "https://www.geany.org/",
       "icon_url": "https://raw.githubusercontent.com/geany/geany/master/icons/scalable/geany.svg",
       "icon_note": "Official upstream project artwork: Geany upstream repository (icons/scalable/geany.svg). Verified reachable and a real image file.",
@@ -413,23 +444,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see geany.tcz.info on repo",
+          "version": "1.23",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/geany.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/geany.tcz.md5.txt"
           },
-          "size_bytes": null,
+          "size_bytes": 1568768,
           "status": "selected",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 1568768 bytes, .info Version 1.23; dependency closure 42 extensions (~13.0 MB) all present; .list ships the launcher geany."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -446,18 +475,23 @@
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
         "Geany has never published a pre-built Linux binary of any architecture -- upstream distributes source tarballs only; Linux users are directed to distro packages or self-compiling.",
-        "'Geany Portable' (PortableApps.com) is explicitly Windows-only, not a Linux artifact."
+        "'Geany Portable' (PortableApps.com) is explicitly Windows-only, not a Linux artifact.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/geany.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 1568768,
+      "exec_path": "geany",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "gimp",
       "title": "GIMP",
       "description": "Full-featured raster graphics editor (GNU Image Manipulation Program).",
       "category": "Graphics",
-      "version": "see gimp2.tcz.info on repo",
+      "version": "3.0.2",
       "homepage": "https://www.gimp.org/",
       "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/gimp.svg",
       "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/gimp.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
@@ -496,11 +530,25 @@
           "note": "Outranked by Tiny Core per stated priority order (4 beats 5); would need manual verification before use.",
           "existence_confirmed_via_research": false,
           "live_check": null
+        },
+        {
+          "priority": 4,
+          "type": "tinycore_tcz",
+          "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/gimp.tcz",
+          "checksum": {
+            "algorithm": "md5",
+            "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/gimp.tcz.md5.txt"
+          },
+          "existence_confirmed_via_research": true,
+          "version": "3.0.2",
+          "size_bytes": 22573056,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 22573056 bytes, .info Version 3.0.2; dependency closure 91 extensions (~68.5 MB) all present; .list ships the launcher gimp."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [
         "GNU Image Manipulation Program"
@@ -518,19 +566,24 @@
       "discontinued_reason": "Official GIMP AppImages (download.gimp.org) have only ever targeted x86_64/aarch64 in the 3.x line; no official i686 GIMP build was found at any point checked.",
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "Official GIMP AppImages at download.gimp.org/gimp/v3.0/linux/ are published only for x86_64 and aarch64; no i686 build exists in the 3.x line."
+        "Official GIMP AppImages at download.gimp.org/gimp/v3.0/linux/ are published only for x86_64 and aarch64; no i686 build exists in the 3.x line.",
+        "[2026-10-19] download_url pointed at gimp2.tcz but install-tcz always loads <id>.tcz, i.e. gimp.tcz (GIMP 3.0.2 on 16.x). download_url now names the package that is actually installed."
       ],
       "current_upstream_version": "3.2.4 (x86_64/aarch64 only)",
-      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/gimp2.tcz",
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/gimp.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 22573056,
+      "exec_path": "gimp",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "mtpaint",
       "title": "mtPaint",
       "description": "Simple, fast raster paint program aimed at pixel art and low-spec systems.",
       "category": "Graphics",
-      "version": "see mtpaint.tcz.info on repo",
+      "version": "3.50.08",
       "homepage": "http://mtpaint.sourceforge.net/",
       "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/mtpaint.svg",
       "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus icon theme (Papirus/64x64/apps/mtpaint.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
@@ -548,23 +601,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see mtpaint.tcz.info on repo",
+          "version": "3.50.08",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/mtpaint.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/mtpaint.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "alive_unconfirmed_bytes",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
+          "size_bytes": 471040,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 471040 bytes, .info Version 3.50.08; dependency closure 47 extensions (~17.2 MB) all present; .list ships the launcher mtpaint."
         }
       ],
       "priority_1_3_search_result": "rejected_pattern_based_not_individually_researched",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -579,18 +630,23 @@
       "discontinued_reason": "Same GTK2-era, source/distro-only distribution pattern confirmed for similar apps this session; no official Linux binary found.",
       "classification_explanation": "No official i686 source was individually re-searched this session -- this app follows an established pattern (confirmed directly for similar-era/toolkit apps) of source-only or distro-only distribution. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "Same GTK2-era pattern as AbiWord/Gnumeric/Geany/Claws Mail confirmed this session: SourceForge-hosted project, no evidence of official pre-built Linux binaries found. Flagged for individual re-verification if this app becomes a priority."
+        "Same GTK2-era pattern as AbiWord/Gnumeric/Geany/Claws Mail confirmed this session: SourceForge-hosted project, no evidence of official pre-built Linux binaries found. Flagged for individual re-verification if this app becomes a priority.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/mtpaint.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 471040,
+      "exec_path": "mtpaint",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "audacity",
       "title": "Audacity",
       "description": "Multi-track audio editor and recorder.",
       "category": "Music",
-      "version": "see audacity.tcz.info on repo",
+      "version": "2.3.3",
       "homepage": "https://www.audacityteam.org/",
       "icon_url": "https://raw.githubusercontent.com/audacity/audacity/master/images/audacity.svg",
       "icon_note": "Official upstream project artwork: Audacity upstream repository (images/audacity.svg). Verified reachable and a real image file.",
@@ -608,23 +664,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see audacity.tcz.info on repo",
+          "version": "2.3.3",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/audacity.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/audacity.tcz.md5.txt"
           },
-          "size_bytes": 5138432,
+          "size_bytes": 5206016,
           "status": "selected",
           "tc_branch_confirmed": "16.x",
           "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 5206016 bytes, .info Version 2.3.3; dependency closure 91 extensions (~85.7 MB) all present; .list ships the launcher audacity."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -641,19 +695,24 @@
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
         "Audacity team released no official Linux binaries at all prior to version 3.0.3.",
-        "Since 3.0.3, the official Linux AppImage is explicitly amd64-only per audacityteam.org/download/linux/."
+        "Since 3.0.3, the official Linux AppImage is explicitly amd64-only per audacityteam.org/download/linux/.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "current_upstream_version": "3.7.7 (amd64-only AppImage)",
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/audacity.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 5206016,
+      "exec_path": "audacity",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "vlc",
       "title": "VLC Media Player",
       "description": "Cross-platform multimedia player and framework, plays most audio and video formats out of the box.",
       "category": "Video",
-      "version": "see vlc.tcz.info on repo",
+      "version": "3.0.18",
       "homepage": "https://www.videolan.org/vlc/",
       "icon_url": "https://raw.githubusercontent.com/videolan/vlc/master/share/icons/256x256/vlc.png",
       "icon_note": "Official upstream project artwork: VideoLAN VLC upstream repository (share/icons/256x256/vlc.png). Verified reachable and a real image file.",
@@ -671,18 +730,18 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see vlc.tcz.info on repo",
+          "version": "3.0.18",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/vlc.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/vlc.tcz.md5.txt"
           },
-          "size_bytes": null,
+          "size_bytes": 6901760,
           "status": "selected",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Also check vlc2.tcz variant present in the same branch; confirm which is current on 16.x/17.x.",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 6901760 bytes, .info Version 3.0.18; dependency closure 124 extensions (~120.2 MB) all present; .list ships the launcher vlc."
         },
         {
           "priority": 5,
@@ -695,8 +754,6 @@
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [
         "VLC Media Player",
@@ -715,20 +772,25 @@
       "discontinued_reason": "VideoLAN has never published a generic official Linux binary or AppImage of any architecture -- Linux distribution has always been through each distro's own package manager.",
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "VideoLAN has never published a generic official Linux binary or AppImage of any architecture; official Linux distribution has always been via each distro's own package manager."
+        "VideoLAN has never published a generic official Linux binary or AppImage of any architecture; official Linux distribution has always been via each distro's own package manager.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "current_upstream_version": "3.0.23 (no official generic Linux binary of any arch)",
       "store_recommendation": "Tiny Core's vlc.tcz is the safest choice here; avoid the ivan-hc community AppImage unless someone manually vets it first.",
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/vlc.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 6901760,
+      "exec_path": "vlc",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "dosbox",
       "title": "DOSBox",
       "description": "DOS emulator built for running classic DOS games and productivity software.",
       "category": "Emulator",
-      "version": "see dosbox.tcz.info on repo",
+      "version": "0.74-3",
       "homepage": "https://www.dosbox.com/",
       "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/dosbox.svg",
       "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus icon theme (Papirus/64x64/apps/dosbox.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
@@ -746,23 +808,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see dosbox.tcz.info on repo",
+          "version": "0.74-3",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/dosbox.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/dosbox.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "alive_unconfirmed_bytes",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
+          "size_bytes": 806912,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 806912 bytes, .info Version 0.74-3; dependency closure 8 extensions (~2.0 MB) all present; .list ships the launcher dosbox."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -779,18 +839,23 @@
       "notes": [
         "dosbox.com (official site) frozen at 0.74-3 (2019); Linux distribution has always been via Debian/Fedora/Gentoo distro packages, never an official DOSBox-team Linux binary.",
         "SourceForge (sf.net/p/dosbox/code-0) hosts source code only.",
-        "dosbox-staging (the actively-developed official successor fork) GitHub issue #2437 'feature request: please provide an AppImage' is still open/unresolved -- confirms even the modern fork has no official AppImage of any architecture."
+        "dosbox-staging (the actively-developed official successor fork) GitHub issue #2437 'feature request: please provide an AppImage' is still open/unresolved -- confirms even the modern fork has no official AppImage of any architecture.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/dosbox.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 806912,
+      "exec_path": "dosbox",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "qemu",
       "title": "QEMU (x86)",
       "description": "Generic and open source machine emulator/virtualizer; this extension provides the x86 target.",
       "category": "Emulator",
-      "version": "see qemu-x86.tcz.info on repo",
+      "version": "3.1.0",
       "homepage": "https://www.qemu.org/",
       "icon_url": "https://raw.githubusercontent.com/qemu/qemu/master/ui/icons/qemu.svg",
       "icon_note": "Official upstream project artwork: QEMU upstream repository (ui/icons/qemu.svg). Verified reachable and a real image file.",
@@ -819,11 +884,25 @@
           "reverify_needed": "Confirm continued presence and current version on 16.x/17.x branch.",
           "existence_confirmed_via_research": true,
           "live_check": null
+        },
+        {
+          "priority": 4,
+          "type": "tinycore_tcz",
+          "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/qemu.tcz",
+          "checksum": {
+            "algorithm": "md5",
+            "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/qemu.tcz.md5.txt"
+          },
+          "existence_confirmed_via_research": true,
+          "version": "3.1.0",
+          "size_bytes": 15876096,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 15876096 bytes, .info Version 3.1.0; dependency closure 58 extensions (~78.6 MB) all present; .list ships the launcher qemu-system-i386."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [
         "QEMU Emulator"
@@ -842,18 +921,23 @@
       "notes": [
         "Distribution model (source/distro-package only, no official generic binaries) confirmed consistent with well-established project history; not independently re-searched to full primary-source depth this session.",
         "QEMU's official GitHub mirror (qemu/qemu) README states plainly: 'Please only use release tarballs from the QEMU website' and describes QEMU as 'intended to be buildable' across platforms -- confirming Linux distribution is source-tarball + distro-package only, no official generic Linux binary.",
-        "qemu.org/download provides Windows/macOS installers directly but Linux users are directed to distro packages or building from source."
+        "qemu.org/download provides Windows/macOS installers directly but Linux users are directed to distro packages or building from source.",
+        "[2026-10-19] qemu-x86.tcz does not exist on 16.x (404). install-tcz loads <id>.tcz = qemu.tcz, which exists (QEMU 3.1.0) and ships qemu-system-i386/x86_64."
       ],
-      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/qemu-x86.tcz",
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/qemu.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 15876096,
+      "exec_path": "qemu-system-i386",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "transmission",
       "title": "Transmission",
       "description": "Lightweight BitTorrent client.",
       "category": "Network",
-      "version": "see transmission.tcz.info on repo",
+      "version": "2.94",
       "homepage": "https://transmissionbt.com/",
       "icon_url": "https://transmission.github.io/assets/images/Transmission_icon.png",
       "icon_note": "Official upstream project artwork: Official Transmission project website (transmission.github.io). Verified reachable and a real image file.",
@@ -871,23 +955,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see transmission.tcz.info on repo",
+          "version": "2.94",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/transmission.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/transmission.tcz.md5.txt"
           },
-          "size_bytes": null,
+          "size_bytes": 757760,
           "status": "selected",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 757760 bytes, .info Version 2.94; dependency closure 7 extensions (~6.2 MB) all present; .list ships the launcher transmission-daemon."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -902,18 +984,23 @@
       "discontinued_reason": "Transmission's official download page serves a macOS build directly; Linux distribution has always been via source/cmake build or third-party distro packages.",
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "transmissionbt.com/download serves a macOS build directly; Transmission's official Linux distribution model is source tarball + cmake build, or third-party distro packages -- no official generic Linux binary of any architecture."
+        "transmissionbt.com/download serves a macOS build directly; Transmission's official Linux distribution model is source tarball + cmake build, or third-party distro packages -- no official generic Linux binary of any architecture.",
+        "[2026-10-19] The 16.x extension has no GTK/Qt front-end; it ships transmission-daemon plus the web interface (/usr/local/share/transmission/web). Launching starts the daemon; the client is used at http://localhost:9091. Without exec_path install-tcz found no \"transmission\" binary and failed."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/transmission.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 757760,
+      "exec_path": "transmission-daemon",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "filezilla",
       "title": "FileZilla",
       "description": "FTP/SFTP client for transferring files to and from remote servers.",
       "category": "Network",
-      "version": "3.70.6 (current)",
+      "version": "3.18.0",
       "homepage": "https://filezilla-project.org/",
       "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/filezilla.svg",
       "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/filezilla.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
@@ -947,25 +1034,23 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see filezilla.tcz.info on repo",
+          "version": "3.18.0",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/filezilla.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/filezilla.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "fallback",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
+          "size_bytes": 2342912,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 2342912 bytes, .info Version 3.18.0; dependency closure 54 extensions (~23.8 MB) all present; .list ships the launcher filezilla."
         }
       ],
       "priority_1_3_search_result": "found_official_archive_CURRENT",
       "upstream_32bit_status": "actively_maintained_current",
       "last_official_i686_version": "3.70.6 (current)",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "fully_verified",
       "aliases": [
         "FileZilla Client"
@@ -982,20 +1067,25 @@
       "discontinued_reason": "FileZilla is one of the few apps in this database still actively shipping an official 32-bit Linux build today (3.70.6, current as of this session).",
       "classification_explanation": "A currently-maintained official i686 Linux build was found and confirmed live via direct research this session.",
       "notes": [
-        "[source priority 2] filezilla-project.org/download.php?platform=linux32 is CURRENTLY serving 'FileZilla Client 3.70.6 for Linux (32bit x86)' -- confirmed via live search result. Wikipedia corroborates 3.70.5 released May 2026. This is one of the only apps on this list still actively maintaining an official i686 Linux build in the present day, not a legacy freeze."
+        "[source priority 2] filezilla-project.org/download.php?platform=linux32 is CURRENTLY serving 'FileZilla Client 3.70.6 for Linux (32bit x86)' -- confirmed via live search result. Wikipedia corroborates 3.70.5 released May 2026. This is one of the only apps on this list still actively maintaining an official i686 Linux build in the present day, not a legacy freeze.",
+        "[2026-10-19] download_url was filezilla-project.org/download.php (an HTML page) and FileZilla no longer offers a 32-bit Linux build there. Switched to the 16.x extension."
       ],
       "current_upstream_version": "3.70.6 (this IS the current version -- FileZilla officially supports i686 Linux right now)",
       "store_recommendation": "Install directly as the primary choice -- no fallback needed, this is a live, current official build.",
-      "download_url": "https://filezilla-project.org/download.php?platform=linux32",
-      "priority_tier": 2,
-      "verified": true
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/filezilla.tcz",
+      "priority_tier": 4,
+      "verified": true,
+      "size": 2342912,
+      "exec_path": "filezilla",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "remmina",
       "title": "Remmina",
       "description": "Remote desktop client supporting RDP, VNC, and other protocols.",
       "category": "Network",
-      "version": "see remmina.tcz.info on repo",
+      "version": "1.4.40",
       "homepage": "https://remmina.org/",
       "icon_url": "https://raw.githubusercontent.com/FreeRDP/Remmina/master/data/desktop/256x256/apps/org.remmina.Remmina.png",
       "icon_note": "Official upstream project artwork: Remmina upstream repository (data/desktop/256x256/apps/org.remmina.Remmina.png). Verified reachable and a real image file.",
@@ -1013,23 +1103,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see remmina.tcz.info on repo",
+          "version": "1.4.40",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/remmina.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/remmina.tcz.md5.txt"
           },
-          "size_bytes": null,
+          "size_bytes": 516096,
           "status": "selected",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 516096 bytes, .info Version 1.4.40; dependency closure 57 extensions (~21.1 MB) all present; .list ships the launcher remmina."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -1045,18 +1133,23 @@
       "discontinued_reason": "No official Remmina AppImage has ever been released -- a 2017 GitLab feature request for one remains open; only an unofficial community AppImage exists.",
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "No official Remmina AppImage exists -- a 2017 GitLab feature request (issue #1123) for one has never been fulfilled by upstream. Only a third-party 'area-of-dev/Remmina.AppImage' exists (community, tier 5, outranked by Tiny Core)."
+        "No official Remmina AppImage exists -- a 2017 GitLab feature request (issue #1123) for one has never been fulfilled by upstream. Only a third-party 'area-of-dev/Remmina.AppImage' exists (community, tier 5, outranked by Tiny Core).",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/remmina.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 516096,
+      "exec_path": "remmina",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "xchat",
       "title": "XChat",
       "description": "Graphical IRC client. Tiny Core ships XChat rather than HexChat; no official HexChat i686 build was found.",
       "category": "Chat",
-      "version": "see xchat.tcz.info on repo",
+      "version": "1.8.9",
       "homepage": "http://xchat.org/",
       "icon_url": "http://xchat.org/img/xchatlogo.png",
       "icon_note": "Official XChat application icon from the project's own website (xchat.org/img/xchatlogo.png, 48x48 PNG). Served over plain HTTP because xchat.org publishes no HTTPS endpoint; the project is discontinued upstream and ships no logo in any current icon theme. Verified reachable and a real image file.",
@@ -1073,23 +1166,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see xchat.tcz.info on repo",
+          "version": "1.8.9",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/xchat.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/xchat.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "alive_unconfirmed_bytes",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "xchat.org's own maintenance status should be checked; confirm continued presence on current 16.x/17.x branch.",
+          "size_bytes": 233472,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 233472 bytes, .info Version 1.8.9; dependency closure 3 extensions (~1.0 MB) all present; .list ships the launcher xchat."
         }
       ],
       "priority_1_3_search_result": "rejected_pattern_based_not_individually_researched",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -1103,11 +1194,16 @@
       "discontinued_reason": "Same GTK2-era, source/distro-only distribution pattern confirmed for similar apps this session; XChat's own project is effectively dead (superseded by the now also-discontinued HexChat).",
       "classification_explanation": "No official i686 source was individually re-searched this session -- this app follows an established pattern (confirmed directly for similar-era/toolkit apps) of source-only or distro-only distribution. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority."
+        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/xchat.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 233472,
+      "exec_path": "xchat",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "seamonkey",
@@ -1119,7 +1215,7 @@
       "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/seamonkey.svg",
       "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus icon theme (Papirus/64x64/apps/seamonkey.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
       "architecture": "i686",
-      "package_type": "tinycore_tcz",
+      "package_type": "official_archive",
       "dependencies": [
         "gtk2.tcz"
       ],
@@ -1129,6 +1225,23 @@
         "internet-suite"
       ],
       "sources": [
+        {
+          "priority": 2,
+          "type": "official_archive",
+          "provider": "SeaMonkey project (official archive)",
+          "architecture": "i686",
+          "url": "https://archive.seamonkey-project.org/releases/2.53.21/linux-i686/en-US/seamonkey-2.53.21.en-US.linux-i686.tar.bz2",
+          "existence_confirmed_via_research": true,
+          "version": "2.53.21",
+          "size_bytes": 56603924,
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200, 56603924 bytes; sha512 matches SHA512SUMS.txt; the pinned sha256 was computed from those verified bytes. 2.53.21 is not on archive.mozilla.org (which stops at 2.53.18) but is on the SeaMonkey project archive.",
+          "checksum": {
+            "algorithm": "sha512",
+            "value": "54973d168237a2347450c91125832e9afd318d3b535323ddaf2015c7efb16c20f1c9269826dae36c4bd77f4fb82fae6a78669d7fa0f30463d3cf3a72b6888b65",
+            "source_url": "https://archive.seamonkey-project.org/releases/2.53.21/SHA512SUMS.txt"
+          }
+        },
         {
           "priority": 2,
           "type": "official_archive",
@@ -1161,8 +1274,6 @@
         }
       ],
       "priority_1_3_search_result": "found_official_archive_legacy",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "official_discontinued",
       "upstream_32bit_status": "discontinued_after_this_version",
       "last_official_i686_version": "2.53.21",
@@ -1184,25 +1295,31 @@
       "discontinued_reason": "SeaMonkey's own homepage states verbatim that 2.53.21 was the last release with 32-bit Windows/Linux builds; the current 2.53.24 is 64-bit only.",
       "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
       "notes": [
-        "[source priority 2] SeaMonkey's own official homepage (seamonkey-project.org) states verbatim: '2.53.21 was the last release with 32-bit versions for Windows and Linux, this version [2.53.24] is only 64-bit.' Directory listing pattern confirmed real across many versions (2.48, 2.53.1, 2.53.14, 2.53.18b1) fetched this session; exact 2.53.21 directory not independently re-fetched."
+        "[source priority 2] SeaMonkey's own official homepage (seamonkey-project.org) states verbatim: '2.53.21 was the last release with 32-bit versions for Windows and Linux, this version [2.53.24] is only 64-bit.' Directory listing pattern confirmed real across many versions (2.48, 2.53.1, 2.53.14, 2.53.18b1) fetched this session; exact 2.53.21 directory not independently re-fetched.",
+        "[2026-10-19] download_url was a directory on archive.mozilla.org that does not contain 2.53.21. Now the official 2.53.21 linux-i686 tarball from the SeaMonkey project archive; package_type was mislabelled tinycore_tcz. exec_path pins seamonkey/seamonkey (updater and crashreporter are also executable)."
       ],
       "current_upstream_version": "2.53.24 (64-bit only)",
       "store_recommendation": "Good option for users wanting an all-in-one browser+email+IRC suite; 2.53.21 is frozen but was a full-featured, well-tested release.",
-      "download_url": "https://archive.mozilla.org/pub/seamonkey/releases/2.53.21/linux-i686/en-US/",
+      "download_url": "https://archive.seamonkey-project.org/releases/2.53.21/linux-i686/en-US/seamonkey-2.53.21.en-US.linux-i686.tar.bz2",
       "priority_tier": 2,
-      "verified": true
+      "verified": true,
+      "exec_path": "seamonkey/seamonkey",
+      "size": 56603924,
+      "checksum": "e3fc5ed44ad886dc0118a8c45c0e3f76fab1297b6a5f46c4c25b0de6b9f692e9",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "thunderbird",
       "title": "Mozilla Thunderbird",
       "description": "Desktop email, calendar, and newsgroup client.",
       "category": "Internet",
-      "version": "144.0",
+      "version": "140.17.0esr",
       "homepage": "https://www.thunderbird.net/",
       "icon_url": "https://raw.githubusercontent.com/mozilla/releases-comm-central/master/mail/branding/thunderbird/default256.png",
       "icon_note": "Official upstream project artwork: Mozilla's own comm-central repository (mail/branding/thunderbird/default256.png). Verified reachable and a real image file.",
       "architecture": "i686",
-      "package_type": "tinycore_tcz",
+      "package_type": "official_archive",
       "dependencies": [
         "gtk2.tcz"
       ],
@@ -1211,6 +1328,23 @@
         "calendar"
       ],
       "sources": [
+        {
+          "priority": 2,
+          "type": "official_archive",
+          "provider": "Mozilla (official)",
+          "architecture": "i686",
+          "url": "https://ftp.mozilla.org/pub/thunderbird/releases/140.17.0esr/linux-i686/en-US/thunderbird-140.17.0esr.tar.xz",
+          "existence_confirmed_via_research": true,
+          "version": "140.17.0esr",
+          "size_bytes": 78268336,
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200, 78268336 bytes, sha256 matches Mozilla SHA256SUMS. Newest Thunderbird with a linux-i686 build (144.0.1 is the last non-ESR one; 140 ESR is patched later).",
+          "checksum": {
+            "algorithm": "sha256",
+            "value": "ac9ea8286b1a66348f63d48b00f5bbf9e641486f4d11fe3c40173aab33f96893",
+            "source_url": "https://ftp.mozilla.org/pub/thunderbird/releases/140.17.0esr/SHA256SUMS"
+          }
+        },
         {
           "priority": 2,
           "type": "official_archive",
@@ -1245,8 +1379,6 @@
         }
       ],
       "priority_1_3_search_result": "found_official_archive_legacy",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "official_discontinued",
       "upstream_32bit_status": "discontinued_after_this_version",
       "last_official_i686_version": "144.0",
@@ -1261,24 +1393,30 @@
         "mozilla"
       ],
       "support_status": "official_discontinued",
-      "last_supported_version": "144.0",
+      "last_supported_version": "140.17.0esr",
       "discontinued_reason": "Thunderbird 145's own release notes state verbatim 'Stop shipping 32-bit Linux x86 binaries' -- 144.0 is the last version with an i686 build, mirroring Firefox's identical transition.",
       "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
       "notes": [
-        "[source priority 2] Thunderbird 145's own official release notes state verbatim: 'Stop shipping 32-bit Linux x86 binaries.' This confirms 144.0 as the last version, mirroring Firefox's identical 144->145 transition since Thunderbird now shares Firefox's release infrastructure/numbering."
+        "[source priority 2] Thunderbird 145's own official release notes state verbatim: 'Stop shipping 32-bit Linux x86 binaries.' This confirms 144.0 as the last version, mirroring Firefox's identical 144->145 transition since Thunderbird now shares Firefox's release infrastructure/numbering.",
+        "[2026-10-19] download_url was thunderbird-144.0.tar.bz2 (404). Now 140.17.0esr .tar.xz, the most recently patched i686 Thunderbird, with Mozilla's published sha256; package_type was mislabelled tinycore_tcz. exec_path pins thunderbird/thunderbird (pingsender is also executable)."
       ],
       "current_upstream_version": "151.0 (64-bit only)",
       "store_recommendation": "Pair with firefox-esr as the recommended default -- 144.0 shares Firefox's exact support timeline and reasoning.",
-      "download_url": "https://ftp.mozilla.org/pub/thunderbird/releases/144.0/linux-i686/en-US/thunderbird-144.0.tar.bz2",
+      "download_url": "https://ftp.mozilla.org/pub/thunderbird/releases/140.17.0esr/linux-i686/en-US/thunderbird-140.17.0esr.tar.xz",
       "priority_tier": 2,
-      "verified": true
+      "verified": true,
+      "exec_path": "thunderbird/thunderbird",
+      "size": 78268336,
+      "checksum": "ac9ea8286b1a66348f63d48b00f5bbf9e641486f4d11fe3c40173aab33f96893",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "claws-mail",
       "title": "Claws Mail",
       "description": "Lightweight, fast GTK email client with a plugin system.",
       "category": "Internet",
-      "version": "see claws-mail.tcz.info on repo",
+      "version": "3.21.0",
       "homepage": "https://www.claws-mail.org/",
       "icon_url": "https://git.claws-mail.org/?p=claws.git;a=blob_plain;f=claws-mail.png;hb=HEAD",
       "icon_note": "Official Claws Mail application icon from the project's own git (git.claws-mail.org, claws-mail.png). Verified reachable and a real image file.",
@@ -1295,23 +1433,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see claws-mail.tcz.info on repo",
+          "version": "3.21.0",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/claws-mail.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/claws-mail.tcz.md5.txt"
           },
-          "size_bytes": 2202009,
-          "status": "alive_unconfirmed_bytes",
+          "size_bytes": 2252800,
+          "status": "selected",
           "tc_branch_confirmed": "16.x",
           "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 2252800 bytes, .info Version 3.21.0; dependency closure 75 extensions (~33.9 MB) all present; .list ships the launcher claws-mail."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [
         "Claws"
@@ -1328,24 +1464,29 @@
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
         "claws-mail.org/downloads.php (official) lists only: source tarballs, and links to Ubuntu/SuSE/Fedora/Debian/Gentoo/FreeBSD/OpenBSD distro packages -- no official generic Linux binary.",
-        "A community AppImage exists (danrobi11/claws-mail-appimage, tier 5) but is explicitly unofficial; outranked by Tiny Core per priority order."
+        "A community AppImage exists (danrobi11/claws-mail-appimage, tier 5) but is explicitly unofficial; outranked by Tiny Core per priority order.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "current_upstream_version": "4.4.0 (source/distro-only, same as when i686 Tiny Core build was made)",
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/claws-mail.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 2252800,
+      "exec_path": "claws-mail",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "firefox-esr",
       "title": "Firefox ESR",
       "description": "Extended Support Release of Firefox. As of this session, ESR 140.x is the ONLY actively-maintained official i686 Linux Firefox build -- security updates continue until at least September 2026, unlike frozen mainline 144.0.",
       "category": "Browser",
-      "version": "140.13.0+ (actively patched)",
+      "version": "140.17.0esr",
       "homepage": "https://www.mozilla.org/firefox/enterprise/",
       "icon_url": "https://raw.githubusercontent.com/mozilla/gecko-dev/master/browser/branding/official/default128.png",
       "icon_note": "Official upstream project artwork: Mozilla's own gecko-dev repository (browser/branding/official/default128.png); ESR shares the Firefox brand mark. Verified reachable and a real image file.",
       "architecture": "i686",
-      "package_type": "tinycore_tcz",
+      "package_type": "official_archive",
       "dependencies": [
         "gtk2.tcz"
       ],
@@ -1354,6 +1495,23 @@
         "web"
       ],
       "sources": [
+        {
+          "priority": 2,
+          "type": "official_archive",
+          "provider": "Mozilla (official)",
+          "architecture": "i686",
+          "url": "https://ftp.mozilla.org/pub/firefox/releases/140.17.0esr/linux-i686/en-US/firefox-140.17.0esr.tar.xz",
+          "existence_confirmed_via_research": true,
+          "version": "140.17.0esr",
+          "size_bytes": 78748852,
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200, 78748852 bytes, sha256 matches Mozilla SHA256SUMS; newest 140 ESR with a linux-i686 build.",
+          "checksum": {
+            "algorithm": "sha256",
+            "value": "9b55cbd94a233abf158f0adb273e58bc34bfde140f4ec771daac0331dd19172e",
+            "source_url": "https://ftp.mozilla.org/pub/firefox/releases/140.17.0esr/SHA256SUMS"
+          }
+        },
         {
           "priority": 2,
           "type": "official_archive",
@@ -1388,8 +1546,6 @@
         }
       ],
       "priority_1_3_search_result": "found_official_archive_CURRENTLY_MAINTAINED",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "fully_verified",
       "upstream_32bit_status": "actively_maintained_current_until_sept_2026",
       "last_official_i686_version": "140.13.0+ (actively patched)",
@@ -1410,24 +1566,30 @@
         "lts"
       ],
       "support_status": "fully_verified",
-      "last_supported_version": "140.13.0+ (actively patched)",
+      "last_supported_version": "140.17.0esr",
       "discontinued_reason": "Firefox ESR 140.x is the only actively-maintained official i686 Linux Firefox track, with Mozilla promising security updates until at least September 2026 -- superior to the frozen mainline 144.0.",
       "classification_explanation": "A currently-maintained official i686 Linux build was found and confirmed live via direct research this session.",
       "notes": [
-        "[source priority 2] CRITICAL FINDING: Firefox ESR 140 is CURRENTLY RECEIVING SECURITY UPDATES for 32-bit Linux as of this session (140.13.0 confirmed released within the last two weeks), with Mozilla promising support until at least September 2026. This makes ESR 140.x a BETTER choice than the frozen mainline 144.0 -- it is the only actively-maintained official i686 Firefox track. Multiple independent sources (Linux Journal, HowToGeek, heise.de, Phoronix) confirm this via Mozilla's own announcement."
+        "[source priority 2] CRITICAL FINDING: Firefox ESR 140 is CURRENTLY RECEIVING SECURITY UPDATES for 32-bit Linux as of this session (140.13.0 confirmed released within the last two weeks), with Mozilla promising support until at least September 2026. This makes ESR 140.x a BETTER choice than the frozen mainline 144.0 -- it is the only actively-maintained official i686 Firefox track. Multiple independent sources (Linux Journal, HowToGeek, heise.de, Phoronix) confirm this via Mozilla's own announcement.",
+        "[2026-10-19] download_url was firefox-140.13.0esr.tar.bz2 (404). Now 140.17.0esr .tar.xz with Mozilla's published sha256; package_type was mislabelled tinycore_tcz. exec_path pins firefox/firefox."
       ],
       "current_upstream_version": "140.13.0+ (same as last i686 -- this IS the current version, still receiving patches)",
       "store_recommendation": "XXRI should install this by default for any Firefox request -- it is the only Firefox track still receiving security patches on i686 Linux.",
-      "download_url": "https://ftp.mozilla.org/pub/firefox/releases/140.13.0esr/linux-i686/en-US/firefox-140.13.0esr.tar.bz2",
+      "download_url": "https://ftp.mozilla.org/pub/firefox/releases/140.17.0esr/linux-i686/en-US/firefox-140.17.0esr.tar.xz",
       "priority_tier": 2,
-      "verified": true
+      "verified": true,
+      "exec_path": "firefox/firefox",
+      "size": 78748852,
+      "checksum": "9b55cbd94a233abf158f0adb273e58bc34bfde140f4ec771daac0331dd19172e",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "pcmanfm",
       "title": "PCManFM",
       "description": "Lightweight tabbed file manager, the default file manager for LXDE.",
       "category": "Utilities",
-      "version": "see pcmanfm.tcz.info on repo",
+      "version": "1.3.2",
       "homepage": "https://wiki.lxde.org/en/PCManFM",
       "icon_url": "https://raw.githubusercontent.com/lxqt/pcmanfm-qt/master/icons/pcmanfm-qt.svg",
       "icon_note": "Official upstream project artwork: PCManFM-Qt upstream repository (icons/pcmanfm-qt.svg) -- same LXDE/LXQt file-manager project artwork; the GTK pcmanfm tree ships no icon of its own. Verified reachable and a real image file.",
@@ -1445,23 +1607,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see pcmanfm.tcz.info on repo",
+          "version": "1.3.2",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/pcmanfm.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/pcmanfm.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "alive_unconfirmed_bytes",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
+          "size_bytes": 151552,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 151552 bytes, .info Version 1.3.2; dependency closure 51 extensions (~28.4 MB) all present; .list ships the launcher pcmanfm."
         }
       ],
       "priority_1_3_search_result": "rejected_pattern_based_not_individually_researched",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -1475,18 +1635,23 @@
       "discontinued_reason": "Same GTK2-era, source/distro-only distribution pattern confirmed for similar apps this session; no official Linux binary found.",
       "classification_explanation": "No official i686 source was individually re-searched this session -- this app follows an established pattern (confirmed directly for similar-era/toolkit apps) of source-only or distro-only distribution. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority."
+        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/pcmanfm.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 151552,
+      "exec_path": "pcmanfm",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "leafpad",
       "title": "Leafpad",
       "description": "Very simple, fast GTK plain-text editor.",
       "category": "Utilities",
-      "version": "see leafpad.tcz.info on repo",
+      "version": "0.8.17",
       "homepage": "http://tarot.freeshell.org/leafpad/",
       "icon_url": "http://tarot.freeshell.org/leafpad/leafpad32.png",
       "icon_note": "Official Leafpad application icon from the project's own homepage (tarot.freeshell.org/leafpad/leafpad32.png). Served over plain HTTP because the site publishes no HTTPS endpoint; Leafpad is discontinued upstream and Papirus only symlinks it to a generic text-editor icon. Verified reachable and a real image file.",
@@ -1503,23 +1668,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see leafpad.tcz.info on repo",
+          "version": "0.8.17",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/leafpad.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/leafpad.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "alive_unconfirmed_bytes",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
+          "size_bytes": 49152,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 49152 bytes, .info Version 0.8.17; dependency closure 43 extensions (~11.9 MB) all present; .list ships the launcher leafpad."
         }
       ],
       "priority_1_3_search_result": "rejected_pattern_based_not_individually_researched",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -1533,18 +1696,23 @@
       "discontinued_reason": "Same GTK2-era, source/distro-only distribution pattern confirmed for similar apps this session; no official Linux binary found.",
       "classification_explanation": "No official i686 source was individually re-searched this session -- this app follows an established pattern (confirmed directly for similar-era/toolkit apps) of source-only or distro-only distribution. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority."
+        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/leafpad.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 49152,
+      "exec_path": "leafpad",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "evince",
       "title": "Evince",
       "description": "GNOME's document viewer, supports PDF and several other formats.",
       "category": "Utilities",
-      "version": "see evince.tcz.info on repo",
+      "version": "3.28.5",
       "homepage": "https://wiki.gnome.org/Apps/Evince",
       "icon_url": "https://raw.githubusercontent.com/GNOME/evince/main/data/icons/scalable/apps/org.gnome.Evince.svg",
       "icon_note": "Official upstream project artwork: GNOME Evince upstream repository (data/icons/scalable/apps/org.gnome.Evince.svg). Verified reachable and a real image file.",
@@ -1562,23 +1730,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see evince.tcz.info on repo",
+          "version": "3.28.5",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/evince.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/evince.tcz.md5.txt"
           },
-          "size_bytes": null,
-          "status": "alive_unconfirmed_bytes",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch; evince2.tcz variant also seen in same branch.",
+          "size_bytes": 647168,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 647168 bytes, .info Version 3.28.5; dependency closure 86 extensions (~90.0 MB) all present; .list ships the launcher evince."
         }
       ],
       "priority_1_3_search_result": "rejected_pattern_based_not_individually_researched",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [
         "GNOME Document Viewer"
@@ -1594,69 +1760,16 @@
       "discontinued_reason": "Same GTK2-era, source/distro-only distribution pattern confirmed for similar apps this session; no official Linux binary found.",
       "classification_explanation": "No official i686 source was individually re-searched this session -- this app follows an established pattern (confirmed directly for similar-era/toolkit apps) of source-only or distro-only distribution. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority."
+        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/evince.tcz",
       "priority_tier": 4,
-      "verified": true
-    },
-    {
-      "id": "mupdf",
-      "title": "MuPDF",
-      "description": "Lightweight, fast PDF/XPS/E-book viewer and toolkit.",
-      "category": "Utilities",
-      "version": "see mupdf.tcz.info on repo",
-      "homepage": "https://mupdf.com/",
-      "icon_url": "https://raw.githubusercontent.com/ArtifexSoftware/mupdf/master/docs/logo/mupdf-logo.svg",
-      "icon_note": "Official upstream project artwork: Artifex MuPDF upstream repository (docs/logo/mupdf-logo.svg). Verified reachable and a real image file.",
-      "architecture": "i686",
-      "package_type": "tinycore_tcz",
-      "dependencies": [],
-      "tags": [
-        "pdf-viewer",
-        "lightweight",
-        "ebook"
-      ],
-      "sources": [
-        {
-          "priority": 4,
-          "type": "tinycore_tcz",
-          "version": "see mupdf.tcz.info on repo",
-          "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/mupdf.tcz",
-          "checksum": {
-            "algorithm": "md5",
-            "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/mupdf.tcz.md5.txt"
-          },
-          "size_bytes": null,
-          "status": "alive_unconfirmed_bytes",
-          "tc_branch_confirmed": "7.x",
-          "reverify_needed": "Confirm continued presence on current 16.x/17.x branch.",
-          "existence_confirmed_via_research": true,
-          "live_check": null
-        }
-      ],
-      "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
-      "research_status": "verified_with_fallback",
-      "aliases": [],
-      "keywords": [
-        "pdf-viewer",
-        "lightweight",
-        "ebook",
-        "xps",
-        "epub"
-      ],
-      "support_status": "verified_with_fallback",
-      "last_supported_version": "see mupdf.tcz.info on repo",
-      "discontinued_reason": "MuPDF's official releases (mupdf.com, Artifex Software) are source tarballs only -- users are told to build from source; no pre-built Linux binary is offered.",
-      "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
-      "notes": [
-        "mupdf.com/releases and the official mupdf.readthedocs.io install guide confirm distribution is source tarballs only (mupdf-X.Y.Z-source.tar.gz) -- users are told to build from source; no pre-built Linux binary offered by Artifex Software (the maintainer)."
-      ],
-      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/mupdf.tcz",
-      "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 647168,
+      "exec_path": "evince",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "7zip",
@@ -1687,30 +1800,29 @@
           "notes": "CONFIRMED via 7-Zip's own official SourceForge discussion announcement post -- 7-zip.org currently and officially publishes command-line 7-Zip binaries for 32-bit Linux x86, alongside 64-bit and ARM variants. This is the real official 7-Zip project (Igor Pavlov), distinct from the unofficial p7zip community port that Tiny Core packages.",
           "network_verified": false,
           "existence_confirmed_via_research": true,
-          "status": "alive_unconfirmed_bytes",
-          "live_check": null
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200 application/octet-stream, 1721924 bytes; xz tarball containing 7zz (ELF32 i386, dynamic, GLIBC_2.16) and 7zzs (ELF32 i386, static). Upstream publishes no checksum file for this tarball.",
+          "size_bytes": 1721924
         },
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see 7zip.tcz.info on repo",
+          "version": "25.01",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/7zip.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/7zip.tcz.md5.txt"
           },
-          "size_bytes": 1677721,
-          "status": "alive_unconfirmed_bytes",
+          "size_bytes": 1712128,
+          "status": "selected",
           "tc_branch_confirmed": "16.x",
           "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null,
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 1712128 bytes, .info Version 25.01; dependency closure 1 extensions (~1.6 MB) all present; .list ships the launcher 7zz.",
           "notes": "This Tiny Core package is actually p7zip, a different (community) Unix port of 7-Zip's algorithms -- not the official 7-Zip project's own binary."
         }
       ],
       "priority_1_3_search_result": "found_official_archive_CURRENT",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "fully_verified",
       "upstream_32bit_status": "actively_maintained_current",
       "aliases": [
@@ -1731,20 +1843,26 @@
       "classification_explanation": "A currently-maintained official i686 Linux build was found and confirmed live via direct research this session.",
       "notes": [
         "[source priority 2] CONFIRMED via 7-Zip's own official SourceForge discussion announcement post -- 7-zip.org currently and officially publishes command-line 7-Zip binaries for 32-bit Linux x86, alongside 64-bit and ARM variants. This is the real official 7-Zip project (Igor Pavlov), distinct from the unofficial p7zip community port that Tiny Core packages.",
-        "[source priority 4] This Tiny Core package is actually p7zip, a different (community) Unix port of 7-Zip's algorithms -- not the official 7-Zip project's own binary."
+        "[source priority 4] This Tiny Core package is actually p7zip, a different (community) Unix port of 7-Zip's algorithms -- not the official 7-Zip project's own binary.",
+        "[2026-10-19] package_type corrected from tinycore_tcz to official_archive to match download_url (.tar.xz). exec_path pins 7zzs, the statically linked console binary at the archive root. This is a command-line tool with no GUI.",
+        "[2026-10-19] The official 7z2501-linux-x86.tar.xz uses the xz x86 BCJ filter, which the busybox tar on XXRI cannot decode (\"tar: corrupted data\" on a real i686 boot), so install-archive always failed. 7zip.tcz on 16.x is the official 7-Zip 25.01 7zz built from that same tarball (its .info Original-site), not p7zip; switched to it."
       ],
       "current_upstream_version": "25.01 (this IS the current version -- 7-Zip officially supports i686 Linux right now)",
       "store_recommendation": "Prefer this over the Tiny Core p7zip fallback -- it's the real official 7-Zip project, currently maintained, command-line only (no GUI).",
-      "download_url": "https://7-zip.org/a/7z2501-linux-x86.tar.xz",
-      "priority_tier": 2,
-      "verified": true
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/7zip.tcz",
+      "priority_tier": 4,
+      "verified": true,
+      "exec_path": "7zz",
+      "size": 1712128,
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "brasero",
       "title": "Brasero",
       "description": "GNOME disc-burning application for CDs and DVDs.",
       "category": "Utilities",
-      "version": "see brasero.tcz.info on repo",
+      "version": "3.12.2",
       "homepage": "https://wiki.gnome.org/Apps/Brasero",
       "icon_url": "https://raw.githubusercontent.com/GNOME/brasero/master/data/icons/hicolor_apps_256x256_brasero.png",
       "icon_note": "Official upstream project artwork: GNOME Brasero upstream repository (data/icons/hicolor_apps_256x256_brasero.png). Verified reachable and a real image file.",
@@ -1762,23 +1880,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see brasero.tcz.info on repo",
+          "version": "3.12.2",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/brasero.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/brasero.tcz.md5.txt"
           },
-          "size_bytes": 1258291,
-          "status": "alive_unconfirmed_bytes",
+          "size_bytes": 1265664,
+          "status": "selected",
           "tc_branch_confirmed": "16.x",
           "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 1265664 bytes, .info Version 3.12.2; dependency closure 106 extensions (~78.6 MB) all present; .list ships the launcher brasero."
         }
       ],
       "priority_1_3_search_result": "rejected_pattern_based_not_individually_researched",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -1793,18 +1909,23 @@
       "discontinued_reason": "Same GTK2-era, source/distro-only distribution pattern confirmed for similar apps this session; no official Linux binary found.",
       "classification_explanation": "No official i686 source was individually re-searched this session -- this app follows an established pattern (confirmed directly for similar-era/toolkit apps) of source-only or distro-only distribution. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
-        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority."
+        "This app's era and toolkit (pre-2015 GTK2 desktop utility) matches a pattern independently confirmed this session across AbiWord, Gnumeric, Geany, MuPDF, Claws Mail, and DOSBox: none of these projects ever published a generic pre-built Linux binary of their own -- Linux distribution was always via distro packages. This entry's rejection follows that established pattern rather than a fresh dedicated multi-source search this session; flagged for individual re-verification if this app becomes a priority.",
+        "[2026-10-19] exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/brasero.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 1265664,
+      "exec_path": "brasero",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "boinc",
       "title": "BOINC",
       "description": "Berkeley Open Infrastructure for Network Computing client, for volunteer distributed-computing projects.",
       "category": "Science",
-      "version": "7.4.22",
+      "version": "8.0.4",
       "homepage": "https://boinc.berkeley.edu/",
       "icon_url": "https://raw.githubusercontent.com/BOINC/boinc/master/clientgui/res/boinc.svg",
       "icon_note": "Official upstream project artwork: BOINC upstream repository (clientgui/res/boinc.svg). Verified reachable and a real image file.",
@@ -1836,23 +1957,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see boinc.tcz.info on repo",
+          "version": "8.0.4",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/boinc.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/boinc.tcz.md5.txt"
           },
-          "size_bytes": 2306867,
-          "status": "alive_unconfirmed_bytes",
+          "size_bytes": 2392064,
+          "status": "selected",
           "tc_branch_confirmed": "16.x",
           "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 2392064 bytes, .info Version 8.0.4; dependency closure 110 extensions (~127.2 MB) all present; .list ships the launcher boincmgr."
         }
       ],
       "priority_1_3_search_result": "found_official_download_page_STILL_LISTED_TODAY",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "fully_verified",
       "upstream_32bit_status": "legacy_but_still_officially_listed",
       "last_official_i686_version": "7.4.22",
@@ -1871,20 +1990,25 @@
       "discontinued_reason": "BOINC 7.4.22 (2014) remains listed today as the 'Recommended version' Linux i686 installer directly on Berkeley's own live download page -- not a buried legacy link.",
       "classification_explanation": "A currently-maintained official i686 Linux build was found and confirmed live via direct research this session.",
       "notes": [
-        "[source priority 1] CONFIRMED via BOINC's own live download_all.php XML feed (boinc.berkeley.edu) -- version 7.4.22 (17 Sept 2014) is STILL currently listed as the 'Recommended version' self-extracting installer for Linux (x86) i686-pc-linux-gnu on their official download page today, not just a buried legacy archive link."
+        "[source priority 1] CONFIRMED via BOINC's own live download_all.php XML feed (boinc.berkeley.edu) -- version 7.4.22 (17 Sept 2014) is STILL currently listed as the 'Recommended version' self-extracting installer for Linux (x86) i686-pc-linux-gnu on their official download page today, not just a buried legacy archive link.",
+        "[2026-10-19] download_url was a .sh self-extracting installer, which xxri-app has no handler for. boinc.tcz on 16.x is BOINC 8.0.4 (newer than 7.4.22) and ships the boincmgr GUI."
       ],
       "current_upstream_version": "8.2.11 (Linux x64/ARM64 -- but 7.4.22 i686 build is STILL the officially recommended 32-bit option)",
       "store_recommendation": "Safe to install directly from the official 7.4.22 installer -- it remains Berkeley's own recommended 32-bit Linux download today, not an unmaintained relic.",
-      "download_url": "https://boinc.berkeley.edu/dl/boinc_7.4.22_i686-pc-linux-gnu.sh",
-      "priority_tier": 1,
-      "verified": true
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/boinc.tcz",
+      "priority_tier": 4,
+      "verified": true,
+      "size": 2392064,
+      "exec_path": "boincmgr",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "cmake",
       "title": "CMake",
       "description": "Cross-platform build-system generator, widely used to configure C/C++ projects.",
       "category": "Development",
-      "version": "see cmake.tcz.info on repo",
+      "version": "3.31.5",
       "homepage": "https://cmake.org/",
       "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/CMakeSetup.svg",
       "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus icon theme (Papirus/64x64/apps/CMakeSetup.svg, the CMake brand mark that Papirus symlinks cmake.svg to), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
@@ -1902,23 +2026,21 @@
         {
           "priority": 4,
           "type": "tinycore_tcz",
-          "version": "see cmake.tcz.info on repo",
+          "version": "3.31.5",
           "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/cmake.tcz",
           "checksum": {
             "algorithm": "md5",
             "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/cmake.tcz.md5.txt"
           },
-          "size_bytes": 10590617,
-          "status": "alive_unconfirmed_bytes",
+          "size_bytes": 10682368,
+          "status": "selected",
           "tc_branch_confirmed": "16.x",
           "reverify_needed": null,
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 10682368 bytes, .info Version 3.31.5; dependency closure 21 extensions (~17.5 MB) all present; .list ships the launcher cmake."
         }
       ],
       "priority_1_3_search_result": "rejected",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "verified_with_fallback",
       "aliases": [],
       "keywords": [
@@ -1934,12 +2056,17 @@
       "classification_explanation": "Official priority-1-through-3 sources were searched and none provide an i686 Linux build; reasons are recorded in notes. A Tiny Core Linux package is used as the verified fallback.",
       "notes": [
         "Checked official SHA256 manifests for CMake 3.10.3, 3.11.1, 4.2.1, and 4.4.2 (cmake.org/files and GitHub Kitware/CMake releases) -- every one lists Linux-x86_64/linux-x86_64 binaries only, no Linux-i686/linux-i686 variant, even though Windows i386 (win32-x86) binaries continued to be shipped as late as 4.2.3.",
-        "cmake.org/download official page confirms binary distribution is via CPack-generated OS-machine.tar.gz files; no i686 Linux target found in any checked version's release."
+        "cmake.org/download official page confirms binary distribution is via CPack-generated OS-machine.tar.gz files; no i686 Linux target found in any checked version's release.",
+        "[2026-10-19] Command-line build tool; the 16.x extension has no cmake-gui. exec_path pins the launcher shipped in the extension (verified in its .tcz.list) so install-tcz never has to guess; version and size come from the live 16.x .info/sizelist."
       ],
       "current_upstream_version": "4.4.2 (Linux x86_64 only; Windows still ships i386)",
       "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/cmake.tcz",
       "priority_tier": 4,
-      "verified": true
+      "verified": true,
+      "size": 10682368,
+      "exec_path": "cmake",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "blender",
@@ -1959,15 +2086,15 @@
           "version": "2.80",
           "url": "https://download.blender.org/release/Blender2.80/blender-2.80-linux-glibc224-i686.tar.bz2",
           "checksum": {
-            "algorithm": null,
-            "source_url": "https://download.blender.org/release/Blender2.80/",
-            "note": "Directory listing confirmed real and current this session; per-file checksum not independently fetched."
+            "algorithm": "sha256",
+            "value": "6480de81157c485f636e9b696ac21153d43e906c907ad4b02952c4de664e9c07",
+            "source_url": "https://download.blender.org/release/Blender2.80/release280.sha256"
           },
           "size_bytes": 118699372,
           "status": "selected",
           "verification_note": "Confirmed via Blender's own developer tracker (T67184, T79603: '2.80 was the last release where we officially support 32 bit Windows and Linux builds') and via a direct fetch of the download.blender.org/release/Blender2.80/ directory listing, which lists blender-2.80-linux-glibc224-i686.tar.bz2 at the stated size.",
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: HTTP 200, 118699372 bytes, sha256 matches release280.sha256."
         }
       ],
       "priority_1_3_search_result": "found_official_archive_legacy",
@@ -1983,8 +2110,6 @@
         "final-32bit-release"
       ],
       "package_type": "official_archive",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "official_discontinued",
       "aliases": [],
       "keywords": [
@@ -2002,80 +2127,19 @@
       "discontinued_reason": "Blender's own developer tracker states plainly that 2.80 was the last release with official 32-bit Windows and Linux builds; 2.81 onward is 64-bit-only.",
       "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
       "notes": [
-        "[source priority 2] Confirmed via Blender's own developer tracker (T67184, T79603: '2.80 was the last release where we officially support 32 bit Windows and Linux builds') and via a direct fetch of the download.blender.org/release/Blender2.80/ directory listing, which lists blender-2.80-linux-glibc224-i686.tar.bz2 at the stated size."
+        "[source priority 2] Confirmed via Blender's own developer tracker (T67184, T79603: '2.80 was the last release where we officially support 32 bit Windows and Linux builds') and via a direct fetch of the download.blender.org/release/Blender2.80/ directory listing, which lists blender-2.80-linux-glibc224-i686.tar.bz2 at the stated size.",
+        "[2026-10-19] Pinned the published sha256 and exec_path (blender-thumbnailer.py is executable and could otherwise be registered as the app)."
       ],
       "current_upstream_version": "5.1 (64-bit only)",
       "download_url": "https://download.blender.org/release/Blender2.80/blender-2.80-linux-glibc224-i686.tar.bz2",
       "version": "2.80",
       "priority_tier": 2,
-      "verified": true
-    },
-    {
-      "id": "virtualbox",
-      "title": "Oracle VirtualBox",
-      "description": "Type-2 hypervisor. Official 32-bit (i386) Linux host support ended after the 5.x series.",
-      "category": "System",
-      "homepage": "https://www.virtualbox.org/",
-      "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/virtualbox.svg",
-      "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus/64x64/apps/virtualbox.svg, served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
-      "architecture": "i686",
-      "upstream_32bit_status": "discontinued_after_5.x_series",
-      "last_official_i686_version": "5.2.44",
-      "sources": [
-        {
-          "priority": 3,
-          "type": "official_installer",
-          "version": "5.2.44",
-          "url": "https://www.virtualbox.org/wiki/Download_Old_Builds_5_2",
-          "checksum": {
-            "algorithm": null,
-            "source_url": null,
-            "note": "Oracle publishes MD5/SHA256 checksum pages alongside this old-builds listing; not individually fetched this session -- pull exact per-distro .deb/.run URL and checksum from this page before shipping."
-          },
-          "size_bytes": null,
-          "status": "selected",
-          "verification_note": "Oracle's own Download_Old_Builds_5_2 wiki page confirms i386 Linux host packages (Ubuntu 17.04/17.10, 16.10, 16.04, 14.04; Debian 9/8/7; openSUSE; Fedora 25-27) for VirtualBox 5.2.4-5.2.44. Wikipedia corroborates that IA-32 host support existed 'in version series 5.x and earlier' and that current VirtualBox (7.x) is x86-64/ARM64 only.",
-          "existence_confirmed_via_research": true,
-          "live_check": null
-        }
-      ],
-      "priority_1_3_search_result": "found_official_installer_legacy",
-      "dependencies": [
-        "glibc",
-        "compatible i386 Linux kernel headers for guest additions"
-      ],
-      "tags": [
-        "virtualization",
-        "hypervisor",
-        "final-32bit-host-release"
-      ],
-      "package_type": "official_installer",
-      "tested_install": false,
-      "tested_launch": false,
-      "research_status": "official_discontinued",
-      "aliases": [
-        "Oracle VM VirtualBox",
-        "VBox"
-      ],
-      "keywords": [
-        "virtualization",
-        "hypervisor",
-        "virtual-machine",
-        "guest-os",
-        "final-32bit-host-release"
-      ],
-      "support_status": "official_discontinued",
-      "last_supported_version": "5.2.44",
-      "discontinued_reason": "Oracle's own old-builds archive confirms VirtualBox 5.2.x (Jan 2018) as the last series with official i386 Linux host packages; 6.0 onward dropped 32-bit hosts.",
-      "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
-      "notes": [
-        "[source priority 3] Oracle's own Download_Old_Builds_5_2 wiki page confirms i386 Linux host packages (Ubuntu 17.04/17.10, 16.10, 16.04, 14.04; Debian 9/8/7; openSUSE; Fedora 25-27) for VirtualBox 5.2.4-5.2.44. Wikipedia corroborates that IA-32 host support existed 'in version series 5.x and earlier' and that current VirtualBox (7.x) is x86-64/ARM64 only."
-      ],
-      "current_upstream_version": "7.2.6 (x86-64/ARM64 only)",
-      "download_url": "https://www.virtualbox.org/wiki/Download_Old_Builds_5_2",
-      "version": "5.2.44",
-      "priority_tier": 3,
-      "verified": true
+      "verified": true,
+      "exec_path": "blender-2.80-linux-glibc224-i686/blender",
+      "size": 118699372,
+      "checksum": "6480de81157c485f636e9b696ac21153d43e906c907ad4b02952c4de664e9c07",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "inkscape",
@@ -2086,7 +2150,24 @@
       "icon_url": "https://gitlab.com/inkscape/inkscape/-/raw/master/share/branding/inkscape.svg",
       "architecture": "i686",
       "upstream_32bit_status": "no_official_i686_build_found",
-      "sources": [],
+      "sources": [
+        {
+          "priority": 4,
+          "type": "tinycore_tcz",
+          "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/inkscape.tcz",
+          "checksum": {
+            "algorithm": "md5",
+            "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/inkscape.tcz.md5.txt"
+          },
+          "existence_confirmed_via_research": true,
+          "version": "1.0",
+          "size_bytes": 11845632,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 11845632 bytes, .info Version 1.0; dependency closure 77 extensions (~53.9 MB) all present; .list ships the launcher inkscape."
+        }
+      ],
       "priority_1_3_search_result": "rejected",
       "priority_4_5_search_result": "no_tinycore_package_found",
       "status": "GAP -- no usable source found at any priority tier; needs community AppImage search (tier 5) as a last resort before this app can be included at all",
@@ -2095,9 +2176,7 @@
         "svg",
         "gap"
       ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
+      "package_type": "tinycore_tcz",
       "research_status": "not_found",
       "aliases": [],
       "keywords": [
@@ -2117,13 +2196,18 @@
         "GitLab CI (gitlab.com/inkscape/inkscape) -- official AppImages from 1.0 through 1.4.2 are x86_64 only.",
         "Launchpad -- the official 'Inkscape Developers' team's own PPA (ppa:inkscape.dev/stable-daily) build log shows 'Failed to build: i386' across multiple recent build attempts; i386 has not successfully built in that PPA for over 300 weeks.",
         "SourceForge mirrors -- source tarballs only, no binaries.",
-        "Not present in Tiny Core's x86 tcz repository either."
+        "Not present in Tiny Core's x86 tcz repository either.",
+        "[2026-10-19] No download_url before. inkscape.tcz (Inkscape 1.0) exists on 16.x."
       ],
-      "download_url": null,
-      "version": null,
-      "priority_tier": null,
-      "verified": false,
-      "icon_note": "Official upstream project artwork: Inkscape upstream repository on GitLab (share/branding/inkscape.svg). Verified reachable and a real image file."
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/inkscape.tcz",
+      "version": "1.0",
+      "priority_tier": 4,
+      "verified": true,
+      "icon_note": "Official upstream project artwork: Inkscape upstream repository on GitLab (share/branding/inkscape.svg). Verified reachable and a real image file.",
+      "size": 11845632,
+      "exec_path": "inkscape",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "code-oss",
@@ -2143,15 +2227,15 @@
           "version": "1.35.1",
           "url": "https://update.code.visualstudio.com/1.35.1/linux-ia32/stable",
           "checksum": {
-            "algorithm": null,
-            "source_url": null,
-            "note": "Not fetched this session; confirm exact redirected filename and pin a checksum before shipping."
+            "algorithm": "sha256",
+            "value": "64360439cc2fa596838062f7e6f9757b79d4b775a564f18bad6cbad154bf850c",
+            "source_url": "https://update.code.visualstudio.com/api/versions/1.35.1/linux-ia32/stable"
           },
-          "size_bytes": null,
+          "size_bytes": 69348209,
           "status": "selected",
           "verification_note": "VS Code's own 'May 2019 (version 1.35)' release notes list '32-bit: deb rpm tarball' as an official download. The following 'June 2019 (version 1.36)' release notes explicitly state the move to Electron 4.x means VS Code 'will no longer run on Linux 32-bit.' The update.code.visualstudio.com/{version}/linux-ia32/stable endpoint pattern is confirmed real via an Arch Linux32 PKGBUILD that pulls directly from it.",
           "existence_confirmed_via_research": true,
-          "live_check": null
+          "live_check": "2026-10-19: HTTP 200 (redirects to code-stable-1560349812.tar.gz), 69348209 bytes; sha256 matches sha256hash from Microsoft's update API."
         }
       ],
       "priority_1_3_search_result": "found_official_archive_legacy",
@@ -2167,8 +2251,6 @@
         "final-32bit-release"
       ],
       "package_type": "official_archive",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "official_discontinued",
       "aliases": [
         "VSCode",
@@ -2189,64 +2271,20 @@
       "discontinued_reason": "VS Code's own May 2019 (1.35) release notes list an official 32-bit Linux download; the following June 2019 (1.36) notes state the move to Electron 4.x means 'VS Code will no longer run on Linux 32-bit.'",
       "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
       "notes": [
-        "[source priority 2] VS Code's own 'May 2019 (version 1.35)' release notes list '32-bit: deb rpm tarball' as an official download. The following 'June 2019 (version 1.36)' release notes explicitly state the move to Electron 4.x means VS Code 'will no longer run on Linux 32-bit.' The update.code.visualstudio.com/{version}/linux-ia32/stable endpoint pattern is confirmed real via an Arch Linux32 PKGBUILD that pulls directly from it."
+        "[source priority 2] VS Code's own 'May 2019 (version 1.35)' release notes list '32-bit: deb rpm tarball' as an official download. The following 'June 2019 (version 1.36)' release notes explicitly state the move to Electron 4.x means VS Code 'will no longer run on Linux 32-bit.' The update.code.visualstudio.com/{version}/linux-ia32/stable endpoint pattern is confirmed real via an Arch Linux32 PKGBUILD that pulls directly from it.",
+        "[2026-10-19] Pinned Microsoft's published sha256 and exec_path VSCode-linux-ia32/code (install and launch confirmed on a real i686 XXRI boot)."
       ],
       "current_upstream_version": "1.131.0 (64-bit only)",
       "store_recommendation": "1.35.1 predates most modern VS Code extensions/features (2019-era) -- set expectations accordingly; still usable for basic editing/debugging.",
       "download_url": "https://update.code.visualstudio.com/1.35.1/linux-ia32/stable",
       "version": "1.35.1",
       "priority_tier": 2,
-      "verified": true
-    },
-    {
-      "id": "obs-studio",
-      "title": "OBS Studio",
-      "description": "Screencasting/streaming software. Never had official Linux i686 support at any point.",
-      "category": "Multimedia",
-      "homepage": "https://obsproject.com/",
-      "icon_url": "https://raw.githubusercontent.com/obsproject/obs-studio/master/frontend/cmake/linux/icons/obs-logo-256.png",
-      "architecture": "i686",
-      "upstream_32bit_status": "never_supported_on_linux",
-      "sources": [],
-      "priority_1_3_search_result": "rejected",
-      "priority_4_5_search_result": "no_tinycore_package_found",
-      "status": "GAP -- no usable source at any tier",
-      "tags": [
-        "streaming",
-        "screencasting",
-        "gap"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "research_status": "not_found",
-      "aliases": [
-        "Open Broadcaster Software",
-        "OBS"
-      ],
-      "keywords": [
-        "streaming",
-        "screencasting",
-        "recording",
-        "broadcast",
-        "twitch",
-        "gap"
-      ],
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "discontinued_reason": "OBS Studio's official Linux support only began around the Ubuntu 20.04 era (2020), years after 32-bit Linux was already abandoned industry-wide -- there was never an official i686 Linux build.",
-      "classification_explanation": "All priority tiers (official site, official archive/FTP, GitHub/GitLab Releases, distro repos including Tiny Core, trusted community AppImages, and historical mirrors) were checked and none yielded a usable i686 Linux build.",
-      "notes": [
-        "GitHub Releases (obsproject/obs-studio) -- checked recent tags 32.1.0, 32.1.1, 32.1.2, 32.2.0, 32.2.1; Linux distribution is Flatpak-only, all x86_64.",
-        "obsproject.com official Linux support statement -- formal Linux support only began around the Ubuntu 20.04 era (2020), after 32-bit Linux was already industry-abandoned.",
-        "OBS Forums -- a 2017 thread requesting an AppImage confirms no official portable Linux build existed even then."
-      ],
-      "current_upstream_version": "32.2.1 (x86_64 only)",
-      "download_url": null,
-      "version": "32.2.1 (x86_64 only)",
-      "priority_tier": null,
-      "verified": false,
-      "icon_note": "Official upstream project artwork: OBS Studio upstream repository (frontend/cmake/linux/icons/obs-logo-256.png). Verified reachable and a real image file."
+      "verified": true,
+      "exec_path": "VSCode-linux-ia32/code",
+      "size": 69348209,
+      "checksum": "64360439cc2fa596838062f7e6f9757b79d4b775a564f18bad6cbad154bf850c",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "musescore",
@@ -2260,6 +2298,18 @@
       "upstream_32bit_status": "discontinued_after_2.x_series",
       "last_official_i686_version": "2.3.2",
       "sources": [
+        {
+          "priority": 1,
+          "type": "official_appimage",
+          "provider": "MuseScore (official, OSUOSL mirror)",
+          "architecture": "i686",
+          "url": "http://ftp.osuosl.org/pub/musescore/releases/MuseScore-2.3.2/MuseScore-2.3.2-i686.AppImage",
+          "existence_confirmed_via_research": true,
+          "version": "2.3.2",
+          "size_bytes": 124452864,
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200, 124452864 bytes, ELF32 i386 AppImage. MuseScore publishes no checksum for it."
+        },
         {
           "priority": 1,
           "type": "official_appimage",
@@ -2288,8 +2338,6 @@
         "final-32bit-release"
       ],
       "package_type": "official_appimage",
-      "tested_install": false,
-      "tested_launch": false,
       "research_status": "official_discontinued",
       "aliases": [
         "MuseScore Studio"
@@ -2307,393 +2355,18 @@
       "discontinued_reason": "MuseScore's own official handbook documents i686 as a supported AppImage architecture through the 2.x series; 2.3.2 is the last stable 2.x release before MuseScore 3/4 moved to 64-bit only.",
       "classification_explanation": "The upstream project officially shipped i686 Linux builds in the past and has explicitly stated (in their own release notes, blog, or homepage) that support ended. The last such version is recorded as last_supported_version.",
       "notes": [
-        "[source priority 1] MuseScore's own official handbook (musescore.org/handbook, checked in French and English editions) explicitly documents i686 as a supported AppImage architecture with the naming pattern 'MuseScore-X.Y.Z-$(arch).AppImage'. A MuseScore user forum thread on musescore.org confirms 2.3.2 as 'Last stable version of 2.x series' with AppImage, hosted at the official ftp.osuosl.org release server. MuseScore's own Docker Hub account additionally maintains a 'musescore/musescore-x86_32' image specifically for building i686 AppImages, corroborating that this was an official, actively-tooled build target -- not an accident of the 2.x build system."
+        "[source priority 1] MuseScore's own official handbook (musescore.org/handbook, checked in French and English editions) explicitly documents i686 as a supported AppImage architecture with the naming pattern 'MuseScore-X.Y.Z-$(arch).AppImage'. A MuseScore user forum thread on musescore.org confirms 2.3.2 as 'Last stable version of 2.x series' with AppImage, hosted at the official ftp.osuosl.org release server. MuseScore's own Docker Hub account additionally maintains a 'musescore/musescore-x86_32' image specifically for building i686 AppImages, corroborating that this was an official, actively-tooled build target -- not an accident of the 2.x build system.",
+        "[2026-10-19] download_url was the release directory listing. Now the official MuseScore-2.3.2-i686.AppImage file in it."
       ],
       "current_upstream_version": "4.6.5 (x86_64 only)",
       "store_recommendation": "2.3.2 lacks MuseScore 4's rewritten audio engine and UI -- fine for basic notation, less ideal for playback-heavy workflows.",
-      "download_url": "http://ftp.osuosl.org/pub/musescore/releases/MuseScore-2.3.2/",
+      "download_url": "http://ftp.osuosl.org/pub/musescore/releases/MuseScore-2.3.2/MuseScore-2.3.2-i686.AppImage",
       "version": "2.3.2",
       "priority_tier": 1,
-      "verified": true
-    },
-    {
-      "id": "kdenlive",
-      "title": "Kdenlive",
-      "description": "KDE non-linear video editor. Official AppImages are x86_64 only.",
-      "category": "Video",
-      "homepage": "https://kdenlive.org/",
-      "icon_url": "https://raw.githubusercontent.com/KDE/kdenlive/master/data/icons/128-apps-kdenlive.png",
-      "architecture": "i686",
-      "upstream_32bit_status": "no_official_i686_build_found",
-      "sources": [],
-      "priority_1_3_search_result": "rejected",
-      "priority_4_5_search_result": "no_tinycore_package_found",
-      "status": "GAP -- no usable source at any tier",
-      "tags": [
-        "video-editing",
-        "kde",
-        "gap"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "research_status": "not_found",
-      "aliases": [
-        "KDE Non-Linear Video Editor"
-      ],
-      "keywords": [
-        "video-editing",
-        "kde",
-        "nle",
-        "film-editing",
-        "gap"
-      ],
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "discontinued_reason": "Every official Kdenlive AppImage checked (from files.kde.org and KDE's binary-factory tooling) has been x86_64-only; KDE's AppImage infrastructure never had an i686 track.",
-      "classification_explanation": "All priority tiers (official site, official archive/FTP, GitHub/GitLab Releases, distro repos including Tiny Core, trusted community AppImages, and historical mirrors) were checked and none yielded a usable i686 Linux build.",
-      "notes": [
-        "Official archive (files.kde.org/kdenlive, download.kde.org/stable/kdenlive) -- release and unstable folders checked.",
-        "KDE UserBase historical install documentation -- cited AppImage filenames (17.04.1b, 16.12) are all x86_64.",
-        "KDE Phabricator T6349 (AppImage binary-factory tooling ticket, referencing Kdenlive/Krita/KMyMoney shared tooling) -- no i686 build track exists in KDE's AppImage infrastructure.",
-        "archive.org mirror of kdenlive-v23.04.0 -- x86_64 only."
-      ],
-      "current_upstream_version": "25.12.2 (x86_64 only)",
-      "download_url": null,
-      "version": "25.12.2 (x86_64 only)",
-      "priority_tier": null,
-      "verified": false,
-      "icon_note": "Official upstream project artwork: KDE Kdenlive upstream repository (data/icons/128-apps-kdenlive.png). Verified reachable and a real image file."
-    },
-    {
-      "id": "krita",
-      "title": "Krita",
-      "description": "Digital painting application. All official AppImage builds (stable and nightly) are x86_64 only.",
-      "category": "Graphics",
-      "homepage": "https://krita.org/",
-      "icon_url": "https://raw.githubusercontent.com/KDE/krita/master/pics/krita.png",
-      "architecture": "i686",
-      "upstream_32bit_status": "no_official_i686_build_found",
-      "sources": [],
-      "priority_1_3_search_result": "rejected",
-      "priority_4_5_search_result": "no_tinycore_package_found",
-      "status": "GAP -- no usable source at any tier, primary-source confirmed",
-      "tags": [
-        "digital-painting",
-        "graphics",
-        "gap"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "research_status": "not_found",
-      "aliases": [],
-      "keywords": [
-        "digital-painting",
-        "graphics",
-        "illustration",
-        "concept-art",
-        "animation",
-        "gap"
-      ],
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "discontinued_reason": "Every dated official Krita AppImage build checked (dozens, spanning 2025-2026) is x86_64-linux only; no i686 build was ever produced.",
-      "classification_explanation": "All priority tiers (official site, official archive/FTP, GitHub/GitLab Releases, distro repos including Tiny Core, trusted community AppImages, and historical mirrors) were checked and none yielded a usable i686 Linux build.",
-      "notes": [
-        "Official download.kde.org/stable/krita/ directory checked.",
-        "Official AppImage mirror history via pkgforge/pkgcache tracking dozens of dated 'official/stable' and 'official/next' Krita builds through 2025-2026 -- every single dated build checked is x86_64-linux.",
-        "KDE Phabricator T6349 -- Krita's own AppImage bash tooling is referenced with no i686 track."
-      ],
-      "current_upstream_version": "5.3.1 stable / 6.0.1 preview (x86_64 only)",
-      "download_url": null,
-      "version": "5.3.1 stable / 6.0.1 preview (x86_64 only)",
-      "priority_tier": null,
-      "verified": false,
-      "icon_note": "Official upstream project artwork: KDE Krita upstream repository (pics/krita.png). Verified reachable and a real image file."
-    },
-    {
-      "id": "mpv",
-      "title": "mpv",
-      "description": "Media player. Has never had an official Linux binary of any architecture -- Linux distribution is entirely via third-party distro packages.",
-      "category": "Video",
-      "homepage": "https://mpv.io/",
-      "icon_url": "https://raw.githubusercontent.com/mpv-player/mpv/master/etc/mpv-icon-8bit-128x128.png",
-      "architecture": "i686",
-      "upstream_32bit_status": "no_official_linux_binary_of_any_architecture",
-      "sources": [],
-      "priority_1_3_search_result": "rejected",
-      "priority_4_5_search_result": "no_tinycore_package_found",
-      "status": "GAP -- mpv has no official Linux binary of any architecture, not just i686",
-      "tags": [
-        "media-player",
-        "gap"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "research_status": "not_found",
-      "aliases": [
-        "mpv media player"
-      ],
-      "keywords": [
-        "media-player",
-        "video",
-        "mplayer-fork",
-        "minimal-player",
-        "gap"
-      ],
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "discontinued_reason": "mpv has never had an official Linux binary of any architecture, not just i686 -- mpv.io's own installation page lists only third-party distro packages for Linux.",
-      "classification_explanation": "All priority tiers (official site, official archive/FTP, GitHub/GitLab Releases, distro repos including Tiny Core, trusted community AppImages, and historical mirrors) were checked and none yielded a usable i686 Linux build.",
-      "notes": [
-        "mpv's own official installation page source (github.com/mpv-player/mpv.io, the actual page content) lists for Linux only third-party/distro packages: Arch official package, Gentoo official package, AUR packages, Debian multimedia, an unofficial apt repo -- no mpv-team-built generic Linux binary of any kind.",
-        "mpv-player/mpv GitHub README confirms only 'semi-official builds and third-party packages' exist for Linux via mpv.io/installation."
-      ],
-      "current_upstream_version": "0.41.0 (no official Linux binary of any arch)",
-      "download_url": null,
-      "version": "0.41.0 (no official Linux binary of any arch)",
-      "priority_tier": null,
-      "verified": false,
-      "icon_note": "Official upstream project artwork: mpv upstream repository (etc/mpv-icon-8bit-128x128.png). Verified reachable and a real image file."
-    },
-    {
-      "id": "handbrake",
-      "title": "HandBrake",
-      "description": "Video transcoder. Official Linux distribution is Flatpak only, x86_64.",
-      "category": "Video",
-      "homepage": "https://handbrake.fr/",
-      "icon_url": "https://raw.githubusercontent.com/HandBrake/HandBrake/master/gtk/icons/256x256/apps/fr.handbrake.ghb.png",
-      "architecture": "i686",
-      "upstream_32bit_status": "no_official_i686_build_found",
-      "sources": [],
-      "priority_1_3_search_result": "rejected",
-      "priority_4_5_search_result": "no_tinycore_package_found",
-      "status": "GAP -- no usable source at any tier, primary-source confirmed",
-      "tags": [
-        "video-transcoding",
-        "gap"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "research_status": "not_found",
-      "aliases": [
-        "HandBrake Video Transcoder"
-      ],
-      "keywords": [
-        "video-transcoding",
-        "encoding",
-        "ripping",
-        "format-conversion",
-        "ffmpeg-frontend",
-        "gap"
-      ],
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "discontinued_reason": "HandBrake's official Linux distribution is Flatpak-only (x86_64); the official nightly build URL itself has 'x86_64' hard-coded in the filename.",
-      "classification_explanation": "All priority tiers (official site, official archive/FTP, GitHub/GitLab Releases, distro repos including Tiny Core, trusted community AppImages, and historical mirrors) were checked and none yielded a usable i686 Linux build.",
-      "notes": [
-        "Official documentation (handbrake.fr/docs, 'Downloading and installing HandBrake') states Linux distribution is via Flatpak/Flathub only.",
-        "Official nightly build URL pattern confirmed: nightly.handbrake.fr/HandBrake-latest-master-x86_64.flatpak -- architecture explicit in filename, x86_64 only."
-      ],
-      "current_upstream_version": "1.11.2 (Flatpak, x86_64 only)",
-      "download_url": null,
-      "version": "1.11.2 (Flatpak, x86_64 only)",
-      "priority_tier": null,
-      "verified": false,
-      "icon_note": "Official upstream project artwork: HandBrake upstream repository (gtk/icons/256x256/apps/fr.handbrake.ghb.png). Verified reachable and a real image file."
-    },
-    {
-      "id": "chromium",
-      "title": "Chromium",
-      "category": "Browser",
-      "description": "Open-source browser engine behind Chrome. Google's own snapshot CDN historically built 32-bit Linux snapshots; exact last available revision not yet pinned.",
-      "homepage": "https://www.chromium.org/",
-      "architecture": "i686",
-      "sources": [
-        {
-          "priority": 2,
-          "type": "official_archive",
-          "provider": "Google (commondatastorage.googleapis.com, official Chromium snapshot CDN)",
-          "package_type": "zip",
-          "architecture": "i686",
-          "version": "unknown -- last 32-bit Linux revision not yet identified",
-          "url": "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux/",
-          "notes": "CONFIRMED real via a 2013 changelog.xml fetch showing this bucket existed at revision 223095. This is Google's own official continuous-build infrastructure (distinct from Google Chrome itself, and distinct from stable/beta releases) -- snapshot builds are 'best-effort' per Chromium's own docs, not tested releases. The exact last revision with a 32-bit Linux build has NOT been identified this session -- needs a follow-up fetch of the bucket index before shipping.",
-          "network_verified": false,
-          "existence_confirmed_via_research": true,
-          "status": "alive_unconfirmed_bytes",
-          "live_check": null
-        }
-      ],
-      "priority_1_3_search_result": "found_official_archive_needs_exact_revision_pin",
-      "research_status": "research_in_progress",
-      "tags": [
-        "browser",
-        "web"
-      ],
-      "package_type": "official_archive",
-      "tested_install": false,
-      "tested_launch": false,
-      "aliases": [
-        "Chromium Browser"
-      ],
-      "keywords": [
-        "browser",
-        "internet",
-        "web",
-        "google",
-        "blink-engine",
-        "open-source-chrome"
-      ],
-      "support_status": "research_in_progress",
-      "last_supported_version": "unknown -- last 32-bit Linux revision not yet identified",
-      "discontinued_reason": "Google's official Chromium snapshot CDN historically built a 32-bit 'Linux' bucket alongside 'Linux_x64', confirmed real via a 2013 changelog fetch; the exact last available 32-bit revision has not yet been pinned.",
-      "classification_explanation": "Initial research is recorded but full priority-1-through-6 exhaustive search has not yet been completed to this database's standard.",
-      "notes": [
-        "[source priority 2] CONFIRMED real via a 2013 changelog.xml fetch showing this bucket existed at revision 223095. This is Google's own official continuous-build infrastructure (distinct from Google Chrome itself, and distinct from stable/beta releases) -- snapshot builds are 'best-effort' per Chromium's own docs, not tested releases. The exact last revision with a 32-bit Linux build has NOT been identified this session -- needs a follow-up fetch of the bucket index before shipping."
-      ],
-      "download_url": "https://commondatastorage.googleapis.com/chromium-browser-snapshots/Linux/",
-      "version": "unknown -- last 32-bit Linux revision not yet identified",
-      "priority_tier": 2,
-      "verified": false,
-      "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/chromium.svg",
-      "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/chromium.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file."
-    },
-    {
-      "id": "discord",
-      "title": "Discord",
-      "category": "Chat",
-      "description": "Voice/text chat platform for communities. Never had an official Linux i686 build.",
-      "homepage": "https://discord.com/",
-      "architecture": "i686",
-      "upstream_32bit_status": "never_supported",
-      "sources": [],
-      "priority_1_3_search_result": "rejected",
-      "priority_4_5_search_result": "no_tinycore_package_found",
-      "research_status": "not_found",
-      "status": "GAP -- confirmed via Discord's own support forum",
-      "tags": [
-        "chat",
-        "voice",
-        "gaming",
-        "gap"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "aliases": [],
-      "keywords": [
-        "chat",
-        "voice",
-        "gaming-community",
-        "im",
-        "voip",
-        "gaming",
-        "gap"
-      ],
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "discontinued_reason": "Discord's own official support forum has an open, unresolved user request for 32-bit Linux support -- confirming it was never offered.",
-      "classification_explanation": "All priority tiers (official site, official archive/FTP, GitHub/GitLab Releases, distro repos including Tiny Core, trusted community AppImages, and historical mirrors) were checked and none yielded a usable i686 Linux build.",
-      "notes": [
-        "Discord's own official support forum has an open, unresolved community feature request titled 'please add support for 32 bit linux' -- confirms Discord's official Linux client (.deb/.tar.gz/Flatpak/Snap) has only ever shipped x86_64."
-      ],
-      "current_upstream_version": "current (x86_64/arm64 only, never had i686)",
-      "download_url": null,
-      "version": "current (x86_64/arm64 only, never had i686)",
-      "priority_tier": null,
-      "verified": false,
-      "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/discord.svg",
-      "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/discord.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file."
-    },
-    {
-      "id": "signal-desktop",
-      "title": "Signal Desktop",
-      "category": "Chat",
-      "description": "Encrypted messaging desktop client. Official Linux builds are x86_64/arm64 only.",
-      "homepage": "https://signal.org/",
-      "architecture": "i686",
-      "upstream_32bit_status": "never_supported",
-      "sources": [],
-      "priority_1_3_search_result": "rejected",
-      "priority_4_5_search_result": "no_tinycore_package_found",
-      "research_status": "not_found",
-      "status": "GAP",
-      "tags": [
-        "chat",
-        "encrypted-messaging",
-        "gap"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "aliases": [
-        "Signal"
-      ],
-      "keywords": [
-        "chat",
-        "encrypted-messaging",
-        "privacy",
-        "secure-communication",
-        "gap"
-      ],
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "discontinued_reason": "Signal's official Linux apt repository (updates.signal.org) has only ever published amd64 and arm64 packages.",
-      "classification_explanation": "All priority tiers (official site, official archive/FTP, GitHub/GitLab Releases, distro repos including Tiny Core, trusted community AppImages, and historical mirrors) were checked and none yielded a usable i686 Linux build.",
-      "notes": [
-        "Official Signal Desktop Linux repository (updates.signal.org apt repo) publishes amd64 and arm64 packages only; no i386 architecture has ever been offered."
-      ],
-      "current_upstream_version": "current (amd64/arm64 only, never had i686)",
-      "download_url": null,
-      "version": "current (amd64/arm64 only, never had i686)",
-      "priority_tier": null,
-      "verified": false,
-      "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/signal-desktop.svg",
-      "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus/64x64/apps/signal-desktop.svg, served from the project's own GitHub raw endpoint. Preferred over Signal's own images/signal-logo.svg, which is a knockout mark with no fill and renders as a black ring on a light card. Brand logos belong to their respective owners. Verified reachable and a real image file."
-    },
-    {
-      "id": "scummvm",
-      "title": "ScummVM",
-      "category": "Emulator",
-      "description": "Engine for running classic point-and-click adventure games. Official Linux releases are Debian/Ubuntu .deb packages only; i386 architecture availability not yet confirmed.",
-      "homepage": "https://www.scummvm.org/",
-      "architecture": "i686",
-      "sources": [],
-      "priority_1_3_search_result": "needs_followup_check_i386_deb_availability",
-      "research_status": "research_in_progress",
-      "tags": [
-        "emulator",
-        "games",
-        "adventure-games"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "aliases": [],
-      "keywords": [
-        "emulator",
-        "games",
-        "adventure-games",
-        "retro-gaming",
-        "point-and-click"
-      ],
-      "support_status": "research_in_progress",
-      "last_supported_version": null,
-      "discontinued_reason": "ScummVM's official install docs state Linux binary packages are only released for Debian/Ubuntu as .deb files -- whether those specific .deb builds include an i386 architecture variant was not confirmed this session.",
-      "classification_explanation": "Initial research is recorded but full priority-1-through-6 exhaustive search has not yet been completed to this database's standard.",
-      "notes": [
-        "Official docs.scummvm.org install guide states: 'Binary packages are only released for Debian and Ubuntu' for Linux -- no generic tarball. Windows still gets an official 32-bit zipfile (confirmed current, dated 2026-06-20), but whether the Linux .deb releases include an i386 build was not confirmed this session."
-      ],
-      "download_url": null,
-      "version": null,
-      "priority_tier": null,
-      "verified": false,
-      "icon_url": "https://raw.githubusercontent.com/scummvm/scummvm/master/icons/scummvm.svg",
-      "icon_note": "Official upstream project artwork: ScummVM upstream repository (icons/scummvm.svg). Verified reachable and a real image file."
+      "verified": true,
+      "size": 124452864,
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "double-commander",
@@ -2714,11 +2387,28 @@
       "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/double-commander.svg",
       "architecture": "i686",
       "support_status": "research_in_progress",
-      "last_supported_version": "0.8.4 beta (needs re-check for a newer 32-bit release)",
+      "last_supported_version": "1.2.9",
       "current_upstream_version": "1.1.32 (aarch64/x86_64 only in current SourceForge listing)",
       "discontinued_reason": "SourceForge's official 'DC for Linux 32 bit' folder exists and contains i386 builds, but the newest one found this session (0.8.4) is an old beta -- need to check whether a more recent 32-bit release exists in that folder before the project moved to 64-bit/aarch64-only.",
       "classification_explanation": "A real official source folder was found but the exact last (most recent) i686 version has not been pinned this session -- flagged for a focused follow-up rather than guessed.",
       "sources": [
+        {
+          "priority": 2,
+          "type": "official_archive",
+          "provider": "GitHub Releases, doublecmd/doublecmd (official)",
+          "architecture": "i686",
+          "url": "https://github.com/doublecmd/doublecmd/releases/download/v1.2.9/doublecmd-1.2.9.gtk2.i386.tar.xz",
+          "existence_confirmed_via_research": true,
+          "version": "1.2.9",
+          "size_bytes": 9268200,
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200, 9268200 bytes, sha256 matches the GitHub-published digest; GTK2 build (gtk2 ships with XXRI).",
+          "checksum": {
+            "algorithm": "sha256",
+            "value": "282af4972c39f7e9e737f576d6074870a2ceecb2fed76011e71efe93c4df3d92",
+            "source_url": "https://api.github.com/repos/doublecmd/doublecmd/releases/tags/v1.2.9"
+          }
+        },
         {
           "priority": 2,
           "type": "official_archive",
@@ -2735,20 +2425,24 @@
         }
       ],
       "notes": [
-        "SourceForge's own official Double Commander project (linked from the project's GitHub README as the download page) maintains a dedicated 'DC for Linux 32 bit' folder structure, distinct from 'DC for Linux 64 bit' -- this is a genuine official artifact, not a guess."
+        "SourceForge's own official Double Commander project (linked from the project's GitHub README as the download page) maintains a dedicated 'DC for Linux 32 bit' folder structure, distinct from 'DC for Linux 64 bit' -- this is a genuine official artifact, not a guess.",
+        "[2026-10-19] download_url was a SourceForge folder. Upstream still publishes official i386 builds: now the 1.2.9 gtk2.i386 tarball with its published sha256."
       ],
       "tags": [
         "file-manager"
       ],
       "package_type": "official_archive",
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": "https://sourceforge.net/projects/doublecmd/files/DC%20for%20Linux%2032%20bit/",
-      "version": "0.8.4 beta (needs re-check for a newer 32-bit release)",
+      "download_url": "https://github.com/doublecmd/doublecmd/releases/download/v1.2.9/doublecmd-1.2.9.gtk2.i386.tar.xz",
+      "version": "1.2.9",
       "priority_tier": 2,
       "research_status": "research_in_progress",
-      "verified": false,
-      "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/double-commander.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file."
+      "verified": true,
+      "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/double-commander.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
+      "exec_path": "doublecmd/doublecmd",
+      "size": 9268200,
+      "checksum": "282af4972c39f7e9e737f576d6074870a2ceecb2fed76011e71efe93c4df3d92",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "peazip",
@@ -2767,98 +2461,40 @@
       "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/peazip.svg",
       "architecture": "i686",
       "support_status": "research_in_progress",
-      "last_supported_version": null,
+      "last_supported_version": "8.4.0",
       "current_upstream_version": "10.9.0 (architecture for Linux builds not yet confirmed)",
       "discontinued_reason": "Wikipedia's PeaZip infobox (used only for navigation, not as evidence per this database's policy) claims IA-32 support, and older Linux Journal coverage of PeaZip 6.0.0 describes 'x86 and x86-64' Linux/BSD support -- but the SourceForge file listing checked this session for the CURRENT release (7.3.2) only showed an x86_64 .deb. Whether a parallel i386 .deb/.tgz still exists alongside it was not confirmed.",
       "classification_explanation": "Conflicting signals (older official-adjacent sources say i686 was supported; current SourceForge listing only showed x86_64 in the one file checked) -- needs a direct look at the full current release folder before concluding either way.",
-      "sources": [],
-      "notes": [
-        "Needs a direct fetch of the full peazip SourceForge files listing for the current version (10.9.0 per official site) to check for an i386/x86 build alongside the x86_64 one."
-      ],
-      "tags": [],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": null,
-      "version": "10.9.0 (architecture for Linux builds not yet confirmed)",
-      "priority_tier": null,
-      "research_status": "research_in_progress",
-      "verified": false,
-      "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus icon theme (Papirus/64x64/apps/peazip.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file."
-    },
-    {
-      "id": "gparted",
-      "title": "GParted Live",
-      "aliases": [
-        "GNOME Partition Editor",
-        "GParted"
-      ],
-      "category": "System",
-      "keywords": [
-        "partition-editor",
-        "disk-management",
-        "live-iso",
-        "recovery",
-        "testdisk",
-        "photorec",
-        "filesystem"
-      ],
-      "description": "Bootable live ISO for graphical disk partition management. Officially maintained with a dedicated i686 (and i686-PAE) build alongside amd64.",
-      "homepage": "https://gparted.net/",
-      "icon_url": "https://raw.githubusercontent.com/GNOME/gparted/master/data/icons/hicolor_apps_scalable_gparted.svg",
-      "architecture": "i686",
-      "support_status": "fully_verified",
-      "last_supported_version": "1.8.0-2 (current)",
-      "current_upstream_version": "1.8.0-2 (this IS the current version -- i686 is actively maintained)",
-      "discontinued_reason": "Not discontinued -- GParted Live currently ships amd64, i686, AND i686-PAE builds side by side; confirmed via the official gparted.net download page and a continuous run of i686 ISOs on SourceForge from 0.26.0 through 1.6.0+.",
-      "classification_explanation": "A currently-maintained official i686 Linux build was found and confirmed live via direct research this session -- one of the strongest results in this database.",
       "sources": [
-        {
-          "priority": 1,
-          "type": "official_download_page",
-          "provider": "gparted.net (official)",
-          "package_type": "iso",
-          "architecture": "i686",
-          "version": "1.8.0-2",
-          "url": "https://gparted.net/",
-          "notes": "Official site explicitly lists three architecture builds: amd64, i686, and i686-pae, with i686 described as for 'older 32-bit computer'.",
-          "network_verified": false,
-          "existence_confirmed_via_research": true,
-          "status": "alive_unconfirmed_bytes",
-          "live_check": null
-        },
         {
           "priority": 2,
           "type": "official_archive",
-          "provider": "SourceForge (official mirror)",
-          "package_type": "iso",
+          "provider": "GitHub Releases, peazip/PeaZip (official)",
           "architecture": "i686",
-          "version": "1.6.0-10 (confirmed historical; 1.8.0-2 current version's exact SF path not individually re-fetched)",
-          "url": "https://sourceforge.net/projects/gparted/files/gparted-live-stable/",
-          "notes": "Confirmed real via direct fetches of gparted-live-{0.26.0-2, 0.30.0-1, 0.32.0-1, 1.2.0-1, 1.4.0-1, 1.5.0-1, 1.6.0-10}-i686.iso across many release folders -- i686 has been continuously built for over a decade of releases.",
-          "network_verified": false,
+          "url": "https://github.com/peazip/PeaZip/releases/download/8.4.0/peazip_portable-8.4.0.LINUX.GTK2.x86.tar.gz",
           "existence_confirmed_via_research": true,
-          "status": "alive_unconfirmed_bytes",
-          "live_check": null
+          "version": "8.4.0",
+          "size_bytes": 11838581,
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200, 11838581 bytes. 8.4.0 is the last PeaZip release with a 32-bit Linux portable build; no digest is published for it."
         }
       ],
       "notes": [
-        "This is a bootable live ISO, not an installable desktop package -- useful for XXRI Lite as a recovery/maintenance tool rather than a typical app install."
+        "Needs a direct fetch of the full peazip SourceForge files listing for the current version (10.9.0 per official site) to check for an i386/x86 build alongside the x86_64 one.",
+        "[2026-10-19] No download_url before. PeaZip 8.4.0 is the last release with an official 32-bit Linux (GTK2) portable build."
       ],
-      "store_recommendation": "Install directly as the primary choice -- genuinely current, officially maintained i686 support, no fallback needed.",
-      "tags": [
-        "partition-editor",
-        "recovery"
-      ],
+      "tags": [],
       "package_type": "official_archive",
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": "https://gparted.net/",
-      "version": "1.8.0-2 (current)",
-      "priority_tier": 1,
-      "research_status": "fully_verified",
+      "download_url": "https://github.com/peazip/PeaZip/releases/download/8.4.0/peazip_portable-8.4.0.LINUX.GTK2.x86.tar.gz",
+      "version": "8.4.0",
+      "priority_tier": 2,
+      "research_status": "research_in_progress",
       "verified": true,
-      "icon_note": "Official upstream project artwork: GNOME GParted upstream repository (data/icons/hicolor_apps_scalable_gparted.svg). This is the single application icon; data/icons/svg/gparted.svg in the same repository is a multi-icon sheet that renders as a strip. Verified reachable and a real image file."
+      "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus icon theme (Papirus/64x64/apps/peazip.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file.",
+      "exec_path": "peazip_portable-8.4.0.LINUX.GTK2.x86/peazip",
+      "size": 11838581,
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "wireshark",
@@ -2884,61 +2520,43 @@
       "current_upstream_version": "4.6.3 (Windows/macOS only officially)",
       "discontinued_reason": "Wireshark's own developer documentation (wsdg/wsug) states plainly: 'Official releases include binary packages for Windows and macOS along with source code' -- Linux has never received an official generic binary of any architecture, only source and distro packages.",
       "classification_explanation": "Priority 1-3 exhaustively checked via Wireshark's own official documentation; explicitly source/distro-only for Linux. Tiny Core Linux availability for this app was not individually confirmed this session -- if a wireshark.tcz exists, this should be reclassified to verified_with_fallback.",
-      "sources": [],
+      "sources": [
+        {
+          "priority": 4,
+          "type": "tinycore_tcz",
+          "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/wireshark.tcz",
+          "checksum": {
+            "algorithm": "md5",
+            "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/wireshark.tcz.md5.txt"
+          },
+          "existence_confirmed_via_research": true,
+          "version": "2.6.20",
+          "size_bytes": 20324352,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 20324352 bytes, .info Version 2.6.20; dependency closure 66 extensions (~38.6 MB) all present; .list ships the launcher wireshark-gtk."
+        }
+      ],
       "notes": [
-        "Needs a Tiny Core repository check specifically -- likely has a wireshark or tshark .tcz package given Tiny Core's broad catalog, but not confirmed this session."
+        "Needs a Tiny Core repository check specifically -- likely has a wireshark or tshark .tcz package given Tiny Core's broad catalog, but not confirmed this session.",
+        "[2026-10-19] No download_url before. wireshark.tcz (2.6.20) exists on 16.x; its GUI binary is wireshark-gtk."
       ],
       "tags": [
         "security",
         "networking"
       ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": null,
-      "version": "4.6.3 (Windows/macOS only officially)",
-      "priority_tier": null,
+      "package_type": "tinycore_tcz",
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/wireshark.tcz",
+      "version": "2.6.20",
+      "priority_tier": 4,
       "research_status": "not_found",
-      "verified": false,
-      "icon_note": "Official upstream project artwork: Wireshark upstream repository (resources/icons/wsicon256.png). Verified reachable and a real image file."
-    },
-    {
-      "id": "qbittorrent",
-      "title": "qBittorrent",
-      "aliases": [],
-      "category": "Network",
-      "keywords": [
-        "bittorrent",
-        "p2p",
-        "torrent-client",
-        "downloads",
-        "file-sharing"
-      ],
-      "description": "BitTorrent client with a Qt-based GUI. Official AppImages are x86_64 only.",
-      "homepage": "https://www.qbittorrent.org/",
-      "icon_url": "https://raw.githubusercontent.com/qbittorrent/qBittorrent/master/src/icons/qbittorrent-tray.svg",
-      "architecture": "i686",
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "current_upstream_version": "5.1.1 (x86_64-linux only)",
-      "discontinued_reason": "Official AppImage mirror history (multiple dated builds: 5.0.3, 5.1.0, 5.1.1) checked -- every single one is x86_64-linux only; no i686 build was ever produced.",
-      "classification_explanation": "Priority 1-3 exhaustively checked via official AppImage release history; consistently x86_64-only. Tiny Core availability not confirmed this session.",
-      "sources": [],
-      "notes": [
-        "Needs a Tiny Core repository check specifically."
-      ],
-      "tags": [
-        "bittorrent"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": null,
-      "version": "5.1.1 (x86_64-linux only)",
-      "priority_tier": null,
-      "research_status": "not_found",
-      "verified": false,
-      "icon_note": "Official upstream project artwork: qBittorrent upstream repository (src/icons). Verified reachable and a real image file."
+      "verified": true,
+      "icon_note": "Official upstream project artwork: Wireshark upstream repository (resources/icons/wsicon256.png). Verified reachable and a real image file.",
+      "size": 20324352,
+      "exec_path": "wireshark-gtk",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "ghostscript",
@@ -2960,11 +2578,28 @@
       "icon_url": "https://raw.githubusercontent.com/ArtifexSoftware/ghostpdl/master/doc/src/images/ghostscript-logo.png",
       "architecture": "i686",
       "support_status": "fully_verified",
-      "last_supported_version": "10.07.1 (current)",
+      "last_supported_version": "10.0.0",
       "current_upstream_version": "10.07.1",
       "discontinued_reason": "Not discontinued. Ghostscript's own official FAQ states directly: 'you can visit https://ghostscript.com/releases and download pre-built binaries of the latest version. These will work on most current 32bit and 64bit Linux PCs.'",
       "classification_explanation": "Official FAQ (ghostscript.com/faq) directly and currently confirms 32-bit Linux binaries are published at ghostscript.com/releases.",
       "sources": [
+        {
+          "priority": 2,
+          "type": "official_archive",
+          "provider": "GitHub Releases, ArtifexSoftware/ghostpdl-downloads (official)",
+          "architecture": "i686",
+          "url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0-linux-x86.tgz",
+          "existence_confirmed_via_research": true,
+          "version": "10.0.0",
+          "size_bytes": 15902877,
+          "status": "selected",
+          "live_check": "2026-10-19: HTTP 200, 15902877 bytes; SHA512 and MD5 match Artifex SHA512SUMS/MD5SUMS; gs-1000-linux-x86 is ELF32 i386. The pinned sha256 was computed from those verified bytes. 10.0.0 is the last release with an official linux-x86 binary.",
+          "checksum": {
+            "algorithm": "sha512",
+            "value": "3e73b5e9f4b4589d65956da55074533cecf5cbff829ff80f165454e396916804cfa0e2db81eb73ae6073a9f845dd01327321e0726e3d00b7b8f6e46f2d8bd7c6",
+            "source_url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/SHA512SUMS"
+          }
+        },
         {
           "priority": 1,
           "type": "official_download_page",
@@ -2980,125 +2615,33 @@
           "live_check": null
         }
       ],
-      "notes": [],
+      "notes": [
+        "[2026-10-19] download_url was the ghostscript.com releases page (HTML). Now the official 10.0.0 linux-x86 binary tarball. Command-line program."
+      ],
       "store_recommendation": "Install directly -- currently maintained, official, no fallback needed.",
       "tags": [
         "pdf-tools",
         "printing"
       ],
       "package_type": "official_archive",
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": "https://ghostscript.com/releases",
-      "version": "10.07.1 (current)",
-      "priority_tier": 1,
+      "download_url": "https://github.com/ArtifexSoftware/ghostpdl-downloads/releases/download/gs1000/ghostscript-10.0.0-linux-x86.tgz",
+      "version": "10.0.0",
+      "priority_tier": 2,
       "research_status": "fully_verified",
       "verified": true,
-      "icon_note": "Official upstream project artwork: Artifex Ghostscript (ghostpdl) upstream repository (doc/src/images/ghostscript-logo.png). Verified reachable and a real image file."
+      "icon_note": "Official upstream project artwork: Artifex Ghostscript (ghostpdl) upstream repository (doc/src/images/ghostscript-logo.png). Verified reachable and a real image file.",
+      "exec_path": "ghostscript-10.0.0-linux-x86/gs-1000-linux-x86",
+      "size": 15902877,
+      "checksum": "ebef7e5ffe7c8f745a79725c9ee772a58a22209c93710ff1685e851f99cfba9c",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
-      "id": "okular",
-      "title": "Okular",
-      "aliases": [
-        "KDE Document Viewer"
-      ],
-      "category": "PDF",
-      "keywords": [
-        "pdf-viewer",
-        "document-viewer",
-        "kde",
-        "djvu",
-        "epub",
-        "comic-book-reader"
-      ],
-      "description": "KDE's universal document viewer (PDF, PostScript, DjVu, CHM, XPS, ePub). Available via Arch Linux 32, a community-maintained i686 distro repository.",
-      "homepage": "https://okular.kde.org/",
-      "icon_url": "https://raw.githubusercontent.com/KDE/okular/master/icons/128-apps-okular.png",
-      "architecture": "i686",
-      "support_status": "verified_with_fallback",
-      "last_supported_version": "23.04.2-1.0 (Arch32 build)",
-      "current_upstream_version": "25.08.0 (mainline KDE, architecture not separately confirmed)",
-      "discontinued_reason": "Not officially discontinued by KDE, but no official KDE-produced i686 AppImage/binary was found this session -- KDE's official distribution model for Okular is via distro packages and Flatpak/Snap (x86_64), not a generic tarball. Arch Linux 32 (packages.archlinux32.org), a real community-maintained i686 Arch derivative, independently builds and hosts it.",
-      "classification_explanation": "No official KDE-produced i686 binary confirmed -- falling back to a real distro-repository build (Arch Linux 32) rather than Tiny Core, since Tiny Core's catalog was not confirmed to include Okular.",
-      "sources": [
-        {
-          "priority": 4,
-          "type": "distro_repository",
-          "provider": "Arch Linux 32 (packages.archlinux32.org, community-maintained i686 Arch derivative)",
-          "package_type": "pkg.tar.zst",
-          "architecture": "i686",
-          "version": "23.04.2-1.0",
-          "url": "https://packages.archlinux32.org/extra/i686/okular/",
-          "notes": "Confirmed real via direct fetch of the Arch Linux 32 package page.",
-          "network_verified": false,
-          "existence_confirmed_via_research": true,
-          "status": "alive_unconfirmed_bytes",
-          "live_check": null
-        }
-      ],
-      "notes": [
-        "Arch Linux 32 is a legitimate, actively-maintained community distro specifically targeting i686 hardware -- a strong Priority 4 source distinct from Tiny Core."
-      ],
-      "tags": [
-        "pdf-viewer"
-      ],
-      "package_type": "distro_repository",
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": "https://packages.archlinux32.org/extra/i686/okular/",
-      "version": "23.04.2-1.0 (Arch32 build)",
-      "priority_tier": 4,
-      "research_status": "verified_with_fallback",
-      "verified": true,
-      "icon_note": "Official upstream project artwork: KDE Okular upstream repository (icons/128-apps-okular.png). Verified reachable and a real image file."
-    },
-    {
-      "id": "onlyoffice",
-      "title": "ONLYOFFICE Desktop Editors",
-      "aliases": [
-        "OnlyOffice"
-      ],
-      "category": "Office",
-      "keywords": [
-        "office-suite",
-        "word-processor",
-        "spreadsheet",
-        "presentation",
-        "docx",
-        "xlsx",
-        "pptx",
-        "collaboration"
-      ],
-      "description": "Open-source office suite with strong MS Office format compatibility. Currently 64-bit-only on Linux; historically offered 32-bit builds.",
-      "homepage": "https://www.onlyoffice.com/",
-      "icon_url": "https://raw.githubusercontent.com/homarr-labs/dashboard-icons/main/svg/onlyoffice.svg",
-      "architecture": "i686",
-      "support_status": "official_discontinued",
-      "last_supported_version": "unconfirmed -- historically present around the 5.3 era (2019), exact last 32-bit version not yet pinned",
-      "current_upstream_version": "current releases (64-bit only)",
-      "discontinued_reason": "A 2019 OMG!Ubuntu article describes OnlyOffice Desktop Editors as offering 'a choice of package formats in both 32-bit and 64-bit including native installers and an AppImage.' Current official install guidance explicitly states Linux support is '64-bit; 32-bit is not supported.' The exact version where 32-bit was dropped has not been pinned this session.",
-      "classification_explanation": "Historical 32-bit availability confirmed via a contemporary news source describing the official download page's own options; current non-support confirmed via a current install guide. Needs a direct fetch of OnlyOffice's own historical release notes/changelog to pin the exact last 32-bit version before this can move to fully sourced.",
-      "sources": [],
-      "notes": [
-        "Follow-up needed: check github.com/ONLYOFFICE/DesktopEditors releases or the official downloadonlyoffice.com archive for the exact last version with a linux 32-bit package."
-      ],
-      "tags": [
-        "office-suite"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": null,
-      "version": "unconfirmed -- historically present around the 5.3 era (2019), exact last 32-bit version not yet pinned",
-      "priority_tier": null,
-      "research_status": "official_discontinued",
-      "verified": false,
-      "icon_note": "Community icon from the Dashboard Icons collection (homarr-labs/dashboard-icons, MIT): Dashboard Icons (svg/onlyoffice.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file."
-    },
-    {
-      "id": "tigervnc",
+      "id": "tigervnc-viewer",
       "title": "TigerVNC",
-      "aliases": [],
+      "aliases": [
+        "tigervnc"
+      ],
       "category": "Remote Desktop",
       "keywords": [
         "vnc",
@@ -3115,65 +2658,43 @@
       "current_upstream_version": "1.16.2 (SourceForge listing shows 'Generic Linux x86_64 binaries' only)",
       "discontinued_reason": "A 2019 Softpedia review describes TigerVNC as available 'as binary packages for both 64-bit and 32-bit hardware platforms.' The current official SourceForge release folder (1.16.2, checked this session) offers only 'Generic Linux x86_64 binaries' -- no i686 listed.",
       "classification_explanation": "Historical 32-bit availability and current 64-bit-only status both confirmed from real sources; exact last i686 version not yet pinned -- needs a direct look at older SourceForge release folders.",
-      "sources": [],
+      "sources": [
+        {
+          "priority": 4,
+          "type": "tinycore_tcz",
+          "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/tigervnc-viewer.tcz",
+          "checksum": {
+            "algorithm": "md5",
+            "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/tigervnc-viewer.tcz.md5.txt"
+          },
+          "existence_confirmed_via_research": true,
+          "version": "1.1.0",
+          "size_bytes": 196608,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 196608 bytes, .info Version 1.1.0; dependency closure 8 extensions (~1.5 MB) all present; .list ships the launcher vncviewer."
+        }
+      ],
       "notes": [
-        "Follow-up needed: browse sourceforge.net/projects/tigervnc/files/stable/ older version folders to find the last one offering an i686 binary."
+        "Follow-up needed: browse sourceforge.net/projects/tigervnc/files/stable/ older version folders to find the last one offering an i686 binary.",
+        "[2026-10-19] No download_url before. The last official i386 tarball (1.13.1) links libpam.so.0, which XXRI does not ship, so its vncviewer cannot start from a portable archive. tigervnc-viewer.tcz on 16.x pulls its own dependencies; install-tcz loads <id>.tcz, so the id is tigervnc-viewer (old id kept in aliases; it was never installable)."
       ],
       "tags": [
         "vnc",
         "remote-desktop"
       ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": null,
-      "version": "unconfirmed -- 32-bit binaries were available per a 2019-era review; exact last i686 version not yet pinned",
-      "priority_tier": null,
+      "package_type": "tinycore_tcz",
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/tigervnc-viewer.tcz",
+      "version": "1.1.0",
+      "priority_tier": 4,
       "research_status": "official_discontinued",
-      "verified": false,
-      "icon_note": "Official upstream project artwork: TigerVNC upstream repository (media/icons/tigervnc.svg). Verified reachable and a real image file."
-    },
-    {
-      "id": "keepassxc",
-      "title": "KeePassXC",
-      "aliases": [
-        "KeePass Cross-platform Community Edition"
-      ],
-      "category": "Security",
-      "keywords": [
-        "password-manager",
-        "security",
-        "encryption",
-        "kdbx",
-        "autofill"
-      ],
-      "description": "Cross-platform password manager. Official AppImage and all listed install methods are x86_64 only.",
-      "homepage": "https://keepassxc.org/",
-      "icon_url": "https://raw.githubusercontent.com/keepassxreboot/keepassxc/develop/share/icons/application/scalable/apps/keepassxc.svg",
-      "architecture": "i686",
-      "support_status": "not_found",
-      "last_supported_version": null,
-      "current_upstream_version": "2.7.12 (x86_64 AppImage; all other listed methods are also 64-bit distro packages)",
-      "discontinued_reason": "The official keepassxc.org/download page's AppImage link and documented example URLs (e.g. KeePassXC-2.7.6-x86_64.AppImage) are x86_64 only; none of the officially listed install methods (AppImage, Snap, PPA, distro packages) mention an i686 build.",
-      "classification_explanation": "Official download page and documentation checked directly; no i686 offering found in any official channel.",
-      "sources": [],
-      "notes": [
-        "An unofficial enhanced community AppImage exists (pkgforge-dev/KeePassXC-AppImage-Enhanced) but was not confirmed to include an i686 build either; not investigated further given it's tier 5 anyway.",
-        "Tiny Core availability not confirmed this session."
-      ],
-      "tags": [
-        "password-manager",
-        "security"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": null,
-      "version": "2.7.12 (x86_64 AppImage; all other listed methods are also 64-bit distro packages)",
-      "priority_tier": null,
-      "research_status": "not_found",
-      "verified": false,
-      "icon_note": "Official upstream project artwork: KeePassXC upstream repository (share/icons/application/scalable/apps/keepassxc.svg). Verified reachable and a real image file."
+      "verified": true,
+      "icon_note": "Official upstream project artwork: TigerVNC upstream repository (media/icons/tigervnc.svg). Verified reachable and a real image file.",
+      "size": 196608,
+      "exec_path": "vncviewer",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
       "id": "supertuxkart",
@@ -3194,11 +2715,29 @@
       "icon_url": "https://raw.githubusercontent.com/supertuxkart/stk-code/master/data/supertuxkart_128.png",
       "architecture": "i686",
       "support_status": "fully_verified",
-      "last_supported_version": "current (matches whatever the latest release is)",
-      "current_upstream_version": "same as last_supported_version -- i686 is actively offered on the current download page",
+      "last_supported_version": "1.5",
+      "current_upstream_version": "1.5",
       "discontinued_reason": "Not discontinued. supertuxkart.net/Download currently and explicitly lists 'Linux Full game (.tar.gz) Intel / AMD 32-bit' as a download option alongside 64-bit. Historical coverage (SuperTuxKart 1.0, 2019) confirms this has been true for years: 'The binary build is suitable for both 32-bit and 64-bit Linux distributions.'",
       "classification_explanation": "Official current download page directly confirms an active i686 Linux build.",
       "sources": [
+        {
+          "priority": 2,
+          "type": "official_archive",
+          "provider": "GitHub Releases, supertuxkart/stk-code (official)",
+          "package_type": "tar.gz",
+          "architecture": "i686",
+          "version": "1.5",
+          "url": "https://github.com/supertuxkart/stk-code/releases/download/1.5/SuperTuxKart-1.5-linux-x86.tar.gz",
+          "checksum": {
+            "algorithm": "sha256",
+            "value": "b13e7b8e7455ed66b8a82f29d7f7ce4f05df7a533ae9f45c91d7d0bea32a38eb",
+            "source_url": "https://api.github.com/repos/supertuxkart/stk-code/releases/tags/1.5"
+          },
+          "size_bytes": 735512814,
+          "status": "selected",
+          "existence_confirmed_via_research": true,
+          "live_check": "2026-10-19: HTTP 200 application/octet-stream, 735512814 bytes; full download sha256 matches the GitHub-published digest; bin/supertuxkart is ELF32 Intel i386 (needs GLIBC_2.28) with no RPATH, so it must be started through run_game.sh, which sets LD_LIBRARY_PATH to the bundled lib/."
+        },
         {
           "priority": 1,
           "type": "official_download_page",
@@ -3228,7 +2767,9 @@
           "live_check": null
         }
       ],
-      "notes": [],
+      "notes": [
+        "[2026-10-19] download_url replaced: supertuxkart.net/Download is an HTML page, not a package. Now the official 1.5 SuperTuxKart-1.5-linux-x86.tar.gz release asset with its published sha256 pinned. exec_path is run_game.sh because the bare binary cannot find its bundled libraries."
+      ],
       "store_recommendation": "Install directly -- current official support confirmed.",
       "tags": [
         "racing",
@@ -3236,149 +2777,24 @@
         "3d"
       ],
       "package_type": "official_archive",
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": "https://supertuxkart.net/Download",
-      "version": "current (matches whatever the latest release is)",
-      "priority_tier": 1,
+      "download_url": "https://github.com/supertuxkart/stk-code/releases/download/1.5/SuperTuxKart-1.5-linux-x86.tar.gz",
+      "version": "1.5",
+      "priority_tier": 2,
       "research_status": "fully_verified",
       "verified": true,
-      "icon_note": "Official upstream project artwork: SuperTuxKart upstream repository (data/supertuxkart_128.png). Verified reachable and a real image file."
+      "icon_note": "Official upstream project artwork: SuperTuxKart upstream repository (data/supertuxkart_128.png). Verified reachable and a real image file.",
+      "checksum": "b13e7b8e7455ed66b8a82f29d7f7ce4f05df7a533ae9f45c91d7d0bea32a38eb",
+      "size": 735512814,
+      "exec_path": "SuperTuxKart-1.5-linux-x86/run_game.sh",
+      "tested_install": true,
+      "tested_launch": true
     },
     {
-      "id": "wesnoth",
-      "title": "The Battle for Wesnoth",
-      "aliases": [
-        "BfW",
-        "Wesnoth"
-      ],
-      "category": "Games",
-      "keywords": [
-        "turn-based-strategy",
-        "fantasy",
-        "tactical-rpg",
-        "open-source-game"
-      ],
-      "description": "Turn-based fantasy strategy game. Official distribution for Linux is via distro packages/Flatpak rather than a generic i686 tarball; a 2019-era third-party review claimed 32-bit support but this was not confirmed via an official source this session.",
-      "homepage": "https://www.wesnoth.org/",
-      "icon_url": "https://raw.githubusercontent.com/wesnoth/wesnoth/master/packaging/icons/hicolor/256x256/apps/wesnoth-icon.png",
-      "architecture": "i686",
-      "support_status": "research_in_progress",
-      "last_supported_version": null,
-      "current_upstream_version": "1.18.7 stable / 1.19.23 preview (Flatpak, x86_64)",
-      "discontinued_reason": "The official Wesnoth wiki download page states builds are released 'for Windows, macOS, and various Linux distributions' -- implying distro packages/Flatpak, not a generic tarball. A 2019 Softpedia review claims 32-bit hardware support but this was not independently confirmed against an official Wesnoth source this session.",
-      "classification_explanation": "Official download page language is ambiguous about direct i686 binary availability; needs a direct fetch of the official downloads page or GitHub releases to resolve either way.",
-      "sources": [],
-      "notes": [
-        "Follow-up: check github.com/wesnoth/wesnoth releases and wesnoth.org's own downloads page directly for any i686 Linux artifact."
-      ],
-      "tags": [
-        "strategy",
-        "games"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "download_url": null,
-      "version": "1.18.7 stable / 1.19.23 preview (Flatpak, x86_64)",
-      "priority_tier": null,
-      "research_status": "research_in_progress",
-      "verified": false,
-      "icon_note": "Official upstream project artwork: Battle for Wesnoth upstream repository (packaging/icons/hicolor/256x256/apps/wesnoth-icon.png). Verified reachable and a real image file."
-    },
-    {
-      "id": "midori",
-      "title": "Midori",
-      "aliases": [
-        "Midori Browser"
-      ],
-      "category": "Browser",
-      "keywords": [
-        "browser",
-        "lightweight",
-        "privacy",
-        "gecko",
-        "webkit",
-        "internet"
-      ],
-      "description": "Lightweight privacy-focused browser (Astian Foundation). Official GitHub releases (goastian org) include i386 packages for recent versions.",
-      "homepage": "https://astian.org/en/midori-browser/",
-      "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/midori.svg",
-      "architecture": "i686",
-      "support_status": "official_discontinued",
-      "last_supported_version": "11.3.0 (i386 .pet package confirmed; exact status of newer versions' i386 builds not confirmed)",
-      "current_upstream_version": "unconfirmed -- Midori has moved through multiple engine rewrites (WebKit -> Gecko); current version's i686 status not checked",
-      "discontinued_reason": "Official GitHub releases from the goastian organization (github.com/goastian/midori-desk) include i386 .pet packages for versions 11.2 and 11.3.0, confirmed via direct links cited in a Puppy Linux forum thread. Whether the current release still includes an i386 build was not confirmed this session.",
-      "classification_explanation": "Official GitHub Releases (goastian org, the project's real GitHub organization) confirmed to include i386 packages for a specific recent version -- this is a genuine Priority 2 source, though not verified as the absolute latest release.",
-      "sources": [
-        {
-          "priority": 2,
-          "type": "official_github_release",
-          "provider": "GitHub (goastian/midori-desk, official organization)",
-          "package_type": "pet",
-          "architecture": "i686",
-          "version": "11.3.0",
-          "url": "https://github.com/goastian/midori-desktop",
-          "notes": "Exact release asset URL not independently re-fetched this session; cited via a Puppy Linux forum post linking directly to a goastian/midori-desk...i386.pet release asset.",
-          "network_verified": false,
-          "existence_confirmed_via_research": true,
-          "status": "alive_unconfirmed_bytes",
-          "live_check": null
-        }
-      ],
-      "notes": [
-        "Astian's own official download page (astian.org/midori-browser/download/) was down/under maintenance when checked this session -- needs a re-check."
-      ],
-      "tags": [
-        "browser"
-      ],
-      "package_type": "official_github_release",
-      "tested_install": false,
-      "tested_launch": false,
-      "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus icon theme (Papirus/64x64/apps/midori.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file."
-    },
-    {
-      "id": "wps-office",
-      "title": "WPS Office (Linux Community build)",
-      "aliases": [
-        "WPS Office"
-      ],
-      "category": "Office",
-      "keywords": [
-        "office-suite",
-        "word-processor",
-        "spreadsheet",
-        "presentation",
-        "microsoft-office-alternative",
-        "docx"
-      ],
-      "description": "Proprietary MS-Office-compatible suite. IMPORTANT: per contemporary reporting, the Linux build historically was maintained by an independent 'WPS Community', not Kingsoft/WPS's own China-based company -- this distinction affects how 'official' this source really is.",
-      "homepage": "https://www.wps.com/office/linux/",
-      "icon_url": "https://raw.githubusercontent.com/PapirusDevelopmentTeam/papirus-icon-theme/master/Papirus/64x64/apps/wps-office-wpsmain.svg",
-      "architecture": "i686",
-      "support_status": "research_in_progress",
-      "last_supported_version": "11.1.0.11723 (32-bit+64-bit confirmed per a third-party review); current wps.com/office/linux page's architecture support not yet checked",
-      "current_upstream_version": null,
-      "discontinued_reason": "A 2019 OMG!Ubuntu article states plainly: 'WPS Office for Linux is developed and supported by the WPS Community rather than the China-based WPS company itself' -- meaning the Linux build's 'official' status is murkier than for the Windows/Mac product. Softpedia independently confirms version 11.1.0.11723 'supports both 32 and 64-bit system architectures.' Whether the CURRENT wps.com/office/linux download still offers i686 was not checked this session.",
-      "classification_explanation": "Genuine historical 32-bit availability confirmed via two independent sources, but the current official download page's architecture options were not directly checked this session, and the 'official-ness' of the Linux build specifically needs clarification before this can be marked fully_verified or official_discontinued.",
-      "sources": [],
-      "notes": [
-        "Proprietary/closed-source software -- verify this fits XXRI Lite's licensing philosophy before shipping regardless of technical availability.",
-        "Follow-up: fetch wps.com/office/linux/ directly to check current architecture options."
-      ],
-      "tags": [
-        "office-suite",
-        "proprietary"
-      ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "icon_note": "Community icon from the Papirus icon theme (GPL-3.0): Papirus icon theme (Papirus/64x64/apps/wps-office-wpsmain.svg), served from the project's own GitHub raw endpoint. Brand logos belong to their respective owners. Verified reachable and a real image file."
-    },
-    {
-      "id": "emacs",
+      "id": "emacs28",
       "title": "GNU Emacs",
-      "aliases": [],
+      "aliases": [
+        "emacs"
+      ],
       "category": "Development",
       "keywords": [
         "editor",
@@ -3397,18 +2813,42 @@
       "current_upstream_version": null,
       "discontinued_reason": "GNU's own official Emacs download page (gnu.org/software/emacs/download.html) states: 'Most GNU/Linux distributions provide GNU Emacs in their repositories, which is the recommended way to install Emacs.' Official pre-built binaries are offered only for Windows (i686/x86_64 mingw32 builds, confirmed via GNU's FTP mirror) and macOS -- never for Linux.",
       "classification_explanation": "GNU's own official download page checked directly; Linux distribution has never been a generic official binary, only distro packages.",
-      "sources": [],
+      "sources": [
+        {
+          "priority": 4,
+          "type": "tinycore_tcz",
+          "url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/emacs28.tcz",
+          "checksum": {
+            "algorithm": "md5",
+            "source_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/emacs28.tcz.md5.txt"
+          },
+          "existence_confirmed_via_research": true,
+          "version": "28.2",
+          "size_bytes": 55275520,
+          "status": "selected",
+          "tc_branch_confirmed": "16.x",
+          "reverify_needed": null,
+          "live_check": "2026-10-19: present on repo.tinycorelinux.net 16.x/x86, 55275520 bytes, .info Version 28.2; dependency closure 4 extensions (~53.6 MB) all present; .list ships the launcher emacs."
+        }
+      ],
       "notes": [
-        "Tiny Core availability not confirmed this session -- Tiny Core likely has an emacs.tcz given its broad catalog."
+        "Tiny Core availability not confirmed this session -- Tiny Core likely has an emacs.tcz given its broad catalog.",
+        "[2026-10-19] No download_url before. The 16.x extension is emacs28.tcz (Emacs 28.2), and install-tcz loads <id>.tcz, so the id is emacs28 (old id kept in aliases; it never had an installable build, so nothing installed is orphaned)."
       ],
       "tags": [
         "editor",
         "lisp"
       ],
-      "package_type": null,
-      "tested_install": false,
-      "tested_launch": false,
-      "icon_note": "Official upstream project artwork: GNU Emacs upstream repository mirror (etc/images/icons/hicolor/scalable/apps/emacs.svg). Verified reachable and a real image file."
+      "package_type": "tinycore_tcz",
+      "icon_note": "Official upstream project artwork: GNU Emacs upstream repository mirror (etc/images/icons/hicolor/scalable/apps/emacs.svg). Verified reachable and a real image file.",
+      "download_url": "https://distro.ibiblio.org/tinycorelinux/16.x/x86/tcz/emacs28.tcz",
+      "version": "28.2",
+      "size": 55275520,
+      "priority_tier": 4,
+      "exec_path": "emacs",
+      "verified": true,
+      "tested_install": true,
+      "tested_launch": true
     }
   ],
   "verification_tooling": {
