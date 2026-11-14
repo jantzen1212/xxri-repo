@@ -4,6 +4,7 @@ Official application database for XXRI Lite.
 
 Architecture:
 - i686
+- x64
 
 Priority:
 1. Official AppImage
